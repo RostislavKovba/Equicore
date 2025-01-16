@@ -35,6 +35,8 @@ class WP_Rock_Blocks
         'block-services' => array(),
         'block-faq' => array(),
         'block-gallery' => array(),
+        'block-cta' => array(),
+        'block-contacts' => array(),
     );
 
     /**
