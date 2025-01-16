@@ -1,0 +1,3 @@
+/*! For license information please see backend.js.LICENSE.txt */
+!function(){"use strict";var e={"./src/scss/backend.scss":function(e,r,t){t.r(r)}},r={};function t(s){var n=r[s];if(void 0!==n)return n.exports;var o=r[s]={exports:{}};return e[s](o,o.exports,t),o.exports}t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})};var s={};!function(){t.r(s);t("./src/scss/backend.scss")}()}();
+//# sourceMappingURL=backend.js.map

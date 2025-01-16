@@ -1,0 +1,40 @@
+body {
+    @include paragraph;
+    @include custom-scrollbar;
+}
+
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    margin: 0;
+}
+
+
+strong, b, .font-weight-bold {
+    font-weight: bold;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.color-white {
+    color: $color-white;
+}
+
+.color-dark {
+    color: $color-dark;
+}
+
+.bg-white {
+    background-color: $color-white;
+}
+
+.bg-dark {
+    background-color: $color-dark;
+}
