@@ -37,6 +37,7 @@ class WP_Rock_Blocks
         'block-gallery' => array(),
         'block-cta' => array(),
         'block-contacts' => array(),
+        'block-team-slider' => array(),
     );
 
     /**

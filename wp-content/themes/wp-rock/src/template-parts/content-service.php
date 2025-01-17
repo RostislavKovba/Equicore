@@ -1,25 +1,48 @@
 <?php
 $id = $args['id'] ?: get_the_ID();
-$id = $args['id'] ?: get_the_ID();
 
 $thumbnail_id = get_post_thumbnail_id($id);
 $categories   = get_the_category($id);
 ?>
 
 <div class="blog-item">
-    <?php if ($categories && !is_wp_error($categories)) : ?>
-        <?php foreach ($categories as $category): ?>
-            <span class="blog-item__category product-item__flash"><?php echo esc_html($category->name); ?></span>
-        <?php endforeach; ?>
-    <?php endif; ?>
-    <a class="blog-item__image" href="<?php the_permalink(); ?>">
-        <?php echo wp_get_attachment_image($thumbnail_id, 'full'); ?>
-    </a>
-    <a class="blog-item__title" href="<?php the_permalink(); ?>">
-        <h4><?php the_title(); ?></h4>
-    </a>
-    <div class="blog-item__desc"><?php the_excerpt(); ?></div>
-    <a class="blog-item__link" href="<?php the_permalink(); ?>"><?php echo pll__('Read More'); ?></a>
+    <div class="blog-content">
+        <a class="h4 title text-animate" href="service-single.php">тренування</a>
+        <div class="text text_sm slideUp">
+            Eqicore — це місце, де поєднуються традиції кінного спорту і сучасні методи тренувань,
+            створюючи комфортну та безпечну атмосферу для коней та їхніх власників.
+        </div>
+        <a href="service-single.php" class="btn-icon slideUp">
+            <svg width="24" height="24">
+                <use xlink:href="img/icons/icons_global.svg#icon-arrow" fill="none"></use>
+            </svg>
+        </a>
+    </div>
+
+    <div class="blog-img-w">
+        <a class="blog-img" href="service-single.php">
+            <picture>
+                <source srcset="img/blog/blog-02.webp" type="image/webp" />
+                <source srcset="img/blog/blog-02.jpg" type="image/jpg" />
+                <img
+                        class="rellax-img"
+                        data-rellax-speed="-2"
+                        width="384"
+                        height="218"
+                        src="#"
+                        alt=""
+                        loading="lazy"
+                />
+            </picture>
+        </a>
+
+        <a href="service-single.php" class="blog-labels">
+            <div class="h4 title">тренування</div>
+            <div class="btn-icon">
+                <svg width="24" height="24">
+                    <use xlink:href="img/icons/icons_global.svg#icon-arrow" fill="none"></use>
+                </svg>
+            </div>
+        </a>
+    </div>
 </div>
-
-

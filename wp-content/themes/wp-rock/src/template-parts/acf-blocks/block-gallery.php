@@ -1,6 +1,6 @@
 <?php
 /**
- * Block - Banner.
+ * Block - Gallery.
  */
 
 $block_fields = get_fields();
@@ -17,7 +17,20 @@ $title      = get_field_value($block_fields, 'title');
 $subtitle   = get_field_value($block_fields, 'subtitle');
 $image_id   = get_field_value($block_fields, 'image') ?: get_post_thumbnail_id();
 
-//wp_get_attachment_image($image_id, 'full');
+$selection_type   = get_field_value($block_fields, 'selection_type');
+$posts_per_page   = get_field_value($block_fields, 'posts_per_page') ?: 5;
+$gallery          = get_field_value($block_fields, 'gallery');
+
+$args = [
+    'post_type'      => 'gallery',
+    'posts_per_page' => $posts_per_page,
+    'post_status'    => 'publish',
+    'order'          => 'DESC',
+];
+if ($selection_type == 'manual')
+    $args['post__in'] = $gallery;
+
+$query = new WP_Query($args);
 ?>
 
 <section class=" <?php echo esc_html($class_name); ?>"
@@ -26,5 +39,9 @@ $image_id   = get_field_value($block_fields, 'image') ?: get_post_thumbnail_id()
     <?php if (IS_ADMIN && $disabled) echo 'disabled="disabled"'; ?>
 >
 
+    <?php while ($query->have_posts()) {
+        $query->the_post();
+        get_template_part('src/template-parts/content', 'gallery', ['id' => get_the_ID()]);
+    } ?>
 
 </section>
