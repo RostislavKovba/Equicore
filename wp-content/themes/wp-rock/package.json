@@ -22,7 +22,7 @@
     "eslint": "eslint src/js/**/*.{ts,js}",
     "eslint:fix": "eslint src/js/**/*.{ts,js} --fix",
     "stylelint": "stylelint src/**/*.{scss,pcss}",
-    "stylelint:fix": "stylelint src/**/*.scss --fix",
+    "stylelint:fix": "stylelint src/**/*.{scss,css} --fix",
     "prettier": "prettier src/js/**/*.{ts,js}",
     "prettier:fix": "prettier --write src/js/**/*.{ts,js}",
     "phplint": "./vendor/bin/phpcs --standard=phpcs.xml --warning-severity=0 ./",
@@ -56,16 +56,12 @@
     "@babel/core": "^7.12.10",
     "@babel/eslint-parser": "^7.12.1",
     "@babel/preset-env": "^7.12.11",
-    "@tsconfig/recommended": "^1.0.1",
-    "@typescript-eslint/eslint-plugin": "^5.48.0",
-    "@typescript-eslint/parser": "^5.48.0",
     "@wordpress/eslint-plugin": "^7.4.0",
     "autoprefixer": "^10.2.1",
     "babel-loader": "^8.2.2",
     "browser-sync": "^2.26.13",
     "browser-sync-webpack-plugin": "^2.3.0",
     "browserslist": "^4.17.1",
-    "terser-webpack-plugin": "^5.3.10",
     "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^5.0.1",
     "css-minimizer-webpack-plugin": "^4.2.2",
@@ -102,8 +98,6 @@
     "stylelint": "^13.8.0",
     "stylelint-scss": "^3.18.0",
     "stylelint-webpack-plugin": "^2.1.1",
-    "ts-loader": "^9.4.2",
-    "typescript": "^4.9.4",
     "url-loader": "^4.1.1",
     "webpack": "^5.12.3",
     "webpack-cli": "^4.3.1",
@@ -128,16 +122,22 @@
     "WP-Pot"
   ],
   "dependencies": {
+    "aos": "^2.3.4",
+    "countup.js": "^2.8.0",
+    "custom-select": "^1.1.15",
+    "lottie-web": "^5.12.2",
+    "rellax": "^1.12.1",
     "smoothscroll-polyfill": "^0.4.4",
-    "swiper": "^8.4.7",
-    "universal-cookie": "^4.0.4"
+    "swiper": "9.2.0",
+    "universal-cookie": "^4.0.4",
+    "url": "^0.11.3"
   },
   "lint-staged": {
-    "*.{js,ts}": [
-      "prettier --write src/js/**/*.ts",
-      "eslint src/js/**/*.ts --fix"
+    "*.js": [
+      "prettier --write src/js/**/*.js",
+      "eslint src/js/**/*.js --fix"
     ],
-    "*.{scss}": [
+    "*.scss": [
       "stylelint src/**/*.scss --fix"
     ],
     "*.php": [

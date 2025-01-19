@@ -1,3 +1,296 @@
-.btn {
+//@import '../parts/mixin';
 
+/*--------------------*/
+/*  Buttons           */
+/*--------------------*/
+:root {
+    --btnSz: 2.65rem;
+    --btnSzSm: 2rem;
+}
+.btn {
+    min-height: var(--btnSz);
+    z-index: 1;
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+    overflow: hidden;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 300;
+    color: var(--clr-white);
+    text-decoration: none;
+    padding: rem(9) rem(20);
+    border: none;
+    text-transform: uppercase;
+    border-radius: var(--rd-1);
+    transition: var(--transition-1);
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    b {
+        display: inline-block;
+        line-height: inherit;
+        font-weight: inherit;
+        color: currentColor;
+    }
+
+    > * + * {
+        margin-left: 0.8em;
+    }
+
+    &-primary {
+        background-color: var(--clr-primary);
+        color: var(--clr-btn);
+    }
+
+    svg {
+        color: currentColor;
+
+        *[stroke] {
+            stroke: currentColor;
+        }
+
+        *[fill] {
+            fill: currentColor;
+        }
+    }
+
+    &-block {
+        width: 100%;
+    }
+
+    &.disabled {
+        pointer-events: none;
+        background-color: var(--clr-grey);
+    }
+
+    &:has(svg:only-child) {
+        // padding: 0.9em;
+        border-radius: 100%;
+
+        svg {
+            width: 1.2em;
+            height: 1.2em;
+        }
+    }
+    &-sm {
+        min-height: var(--btnSzSm);
+        font-size: rem(14);
+        line-height: 1.42;
+        padding: rem(6) rem(17);
+    }
+}
+
+.btn-group {
+    min-height: var(--btnSz);
+    --space: 0.5rem;
+    --pd: 1.25rem;
+    z-index: 1;
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+    overflow: hidden;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 300;
+    color: var(--clr-btn);
+    text-decoration: none;
+    border: none;
+    text-transform: uppercase;
+    transition: var(--transition-2);
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space);
+
+    b {
+        border-radius: var(--rd-1);
+        padding: calc(var(--pd) / 2 - 1px) var(--pd);
+        background-color: var(--clr-primary);
+        height: 100%;
+        transition: var(--transition-2);
+    }
+}
+
+.btn-icon {
+    @include flexCenter;
+    --size: 2.625rem;
+    line-height: 1;
+    z-index: 1;
+    flex: 0 0 var(--size);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 100%;
+    background: transparent;
+    color: var(--clr-black);
+    border: rem(1) solid var(--clr-border);
+    cursor: pointer;
+    transition: var(--transition-2) !important;
+
+    svg {
+        --size: 1rem;
+        width: var(--size);
+        height: var(--size);
+        color: currentColor;
+        & *[stroke] {
+            stroke: currentColor;
+        }
+
+        & *[fill] {
+            fill: currentColor;
+        }
+
+        & > * {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &.type-2 {
+        color: var(--clr-primary);
+        svg {
+            --size: 1.5rem;
+        }
+    }
+}
+
+.btn-close {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    --bw: 2.75rem;
+    width: var(--bw);
+    height: var(--bw);
+    color: var(--clr-primary-400);
+    border-radius: 100%;
+    background-color: transparent;
+    border: rem(1) solid var(--clr-primary);
+    transition: var(--transition-1);
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50%;
+        height: 0.125rem;
+        transform: translate(-50%, -50%) rotate(45deg);
+        background-color: currentColor;
+    }
+
+    &::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    &.type-2 {
+        --bw: unset;
+        border-radius: var(--rd-1);
+        padding: rem(6) rem(22);
+
+        span {
+            color: var(--clr-primary-400);
+            font-size: var(--text-sm);
+            line-height: 1.42;
+            text-transform: uppercase;
+            transition: var(--transition-1);
+        }
+
+        &::before,
+        &::after {
+            display: none;
+        }
+    }
+}
+
+.btn-link {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1.38em;
+    color: var(--clr-title);
+    font-weight: 300;
+    text-decoration: none;
+    transition: var(--transition-1);
+}
+
+.btn-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: rem(4);
+}
+
+@include minMedia(xl) {
+    .btn:hover {
+        background-color: #c08667;
+    }
+
+    .btn-primary:hover {
+        color: var(--clr-btn);
+        background-color: #c08667;
+    }
+
+    .btn-circle:hover {
+        color: var(--clr-primary);
+        border-color: var(--clr-primary);
+    }
+
+    .btn-close:hover {
+        color: var(--clr-primary);
+        background-color: var(--clr-grey);
+    }
+    .btn-close.type-2:hover {
+        background-color: var(--clr-primary);
+        span {
+            color: var(--clr-white);
+        }
+    }
+    .btn-link:hover {
+        color: var(--clr-primary);
+        text-decoration: underline;
+        text-decoration-color: currentColor;
+    }
+    .btn-group:not(.type-2):hover {
+        .btn-icon {
+            background-color: var(--clr-primary);
+            color: var(--clr-white);
+            border-color: transparent;
+            transform: translateX(calc(calc(var(--space) - 1rem) + var(--pd) * -1));
+            border-radius: 0 50% 50% 0;
+        }
+    }
+    .btn-group.type-2:hover {
+        .btn-icon {
+            background-color: var(--clr-primary);
+            color: var(--clr-white);
+            border-color: transparent;
+            border-radius: 0 50% 50% 0;
+        }
+        b {
+            border-radius: var(--rd-1) 0 0 var(--rd-1);
+            transform: translateX(calc(calc(var(--space)) + var(--pd)));
+        }
+    }
+    .btn-icon:hover {
+        color: var(--clr-primary);
+        border-color: var(--clr-primary);
+    }
+}
+
+@include maxMedia(xl) {
+    .btn-link {
+        font-size: 1.125rem;
+    }
+}
+
+@include maxMedia(lg) {
+    .btn-link {
+        font-size: 1rem;
+    }
+
+    .btn-close {
+        --bw: 2rem;
+    }
 }

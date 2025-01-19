@@ -12,6 +12,7 @@ define( 'STYLE_URI', get_stylesheet_uri() );
 define( 'STYLE_DIR', get_stylesheet_directory() );
 define( 'ASSETS_CSS', THEME_URI . '/assets/public/css/' );
 define( 'ASSETS_JS', THEME_URI . '/assets/public/js/' );
+define( 'ASSETS_IMG', THEME_URI . '/assets/public/images/' );
 
 define( 'IS_ADMIN', is_admin());
 

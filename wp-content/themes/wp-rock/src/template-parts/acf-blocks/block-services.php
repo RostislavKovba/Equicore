@@ -29,14 +29,25 @@ if ($selection_type == 'manual')
 $query = new WP_Query($args);
 ?>
 
-<section class=" <?php echo esc_html($class_name); ?>"
+<section class="section section-srv pt-0 <?php  if (!IS_ADMIN) echo 'animate'?> <?php echo esc_html($class_name); ?>"
     <?php if (IS_ADMIN) echo ' visible'; ?>
     <?php if ($block_id) echo ' id="' . esc_attr($block_id) . '"'; ?>
     <?php if (IS_ADMIN && $disabled) echo 'disabled="disabled"'; ?>
 >
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <!-- srv wrap -->
+                <div class="srv-wrap">
 
-    <?php while ($query->have_posts()) {
-        $query->the_post();
-        get_template_part('src/template-parts/content', 'service', ['id' => get_the_ID()]);
-    } ?>
+                    <?php while ($query->have_posts()) {
+                        $query->the_post();
+                        get_template_part('src/template-parts/content', 'service', ['id' => get_the_ID()]);
+                    } ?>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="spacer-lg"></div>
 </section>

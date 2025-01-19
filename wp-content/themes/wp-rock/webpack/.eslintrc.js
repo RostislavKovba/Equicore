@@ -8,9 +8,11 @@
  * @since 1.0.0
  */
 module.exports = {
-    parser: '@typescript-eslint/parser', // Specifies the ESLint parser
+    parser: '@babel/eslint-parser', // Specifies the ESLint parser
     parserOptions: {
         ecmaVersion: 'latest',
+        sourceType: 'module',
+        requireConfigFile: false,
     },
     env: {
         es6: true,
@@ -24,29 +26,24 @@ module.exports = {
     extends: [
         'airbnb-base',
         'plugin:@wordpress/eslint-plugin/recommended',
-        'plugin:@typescript-eslint/recommended', // Uses the recommended rules from @typescript-eslint/eslint-plugin
-        'plugin:import/typescript',
     ],
     rules: {
         'no-console': 'off',
         'no-unused-expressions': 'off',
-        '@typescript-eslint/ban-ts-comment': 'off',
         'no-await-in-loop': 'off',
         'no-continue': 'off',
         'class-methods-use-this': 'off',
         'operator-linebreak': 'off',
         'no-plusplus': 'off',
         'no-async-promise-executor': 'off',
-        indent: ['off', 4],
-        'prettier/prettier': [2, { useTabs: false }],
+        // indent: ['error', 4],
+        // 'prettier/prettier': [2, { useTabs: false }],
         'import/extensions': [
             'error',
             'ignorePackages',
             {
                 js: 'never',
                 jsx: 'never',
-                ts: 'never',
-                tsx: 'never',
             },
         ],
         'no-lone-blocks': 'off',

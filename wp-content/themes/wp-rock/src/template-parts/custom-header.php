@@ -21,11 +21,11 @@ global $global_options;
                     <div class="btn-close type-2">
                         <span>закрити</span>
                     </div>
-                    <div class="container">
+                    <div class="container animate" data-animate='{"target": ".slideUp",  "delay": 250}'>
                         <nav class="h-links">
                             <ul>
-                                <li><a href="about.php">про нас</a></li>
-                                <li>
+                                <li class="slideUp"><a href="about.php">про нас</a></li>
+                                <li class="slideUp">
                                     <div class="h-drop">
                                         <b>послуги</b>
                                         <div class="h-drop-list">
@@ -37,9 +37,9 @@ global $global_options;
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="team.php">команда</a></li>
-                                <li><a href="competitions.php">турніри</a></li>
-                                <li><a href="gallery.php">галерея</a></li>
+                                <li class="slideUp"><a href="team.php">команда</a></li>
+                                <li class="slideUp"><a href="competitions.php">турніри</a></li>
+                                <li class="slideUp"><a href="gallery.php">галерея</a></li>
                             </ul>
                         </nav>
                         <!-- h-contacts -->

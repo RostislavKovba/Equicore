@@ -13,7 +13,7 @@ module.exports = {
     rules: {
         //"max-line-length":         180,
         'no-empty-source': null,
-        indentation: 4,
+        indentation: null,
         'at-rule-no-unknown': null,
         'scss/at-rule-no-unknown': true,
     },

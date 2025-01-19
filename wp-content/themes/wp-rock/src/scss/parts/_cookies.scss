@@ -1,0 +1,58 @@
+//@import '../parts/mixin';
+
+/*--------------------*/
+/*  Cookies           */
+/*--------------------*/
+.cookies-informer {
+	--cookie-pd: clamp(1rem, 0.5789rem + 0.8772vw, 1.5rem);
+	--cookie-gap: 1.5rem;
+	position: fixed;
+	bottom: var(--cookie-gap);
+	left: calc(var(--cookie-gap) / 2);
+	transform: translate(0%, 100%);
+	max-width: min(100%, rem(720));
+	width: calc(100% - var(--cookie-gap));
+	padding: var(--cookie-pd);
+	padding-right: calc(var(--cookie-pd) * 3);
+	border-radius: var(--rd-1);
+	background: var(--clr-white);
+	border: rem(1) solid var(--clr-border);
+	opacity: 0;
+	visibility: hidden;
+	backface-visibility: hidden;
+	transition: var(--transition-1);
+	display: block;
+
+	.btn-close {
+		position: absolute;
+		top: var(--cookie-pd);
+		right: 1rem;
+	}
+
+	&.active {
+		z-index: 500;
+		visibility: visible;
+		opacity: 1;
+		transform: translate(0%, 0%);
+	}
+}
+
+.cookies-informer-inner {
+	width: 100%;
+
+	> * + * {
+		margin-top: 1rem;
+	}
+}
+
+.cookies-btn-wrap {
+	display: flex;
+	align-items: center;
+	gap: 1.25rem;
+
+	> * {
+		&:first-child:not(:hover) {
+			color: var(--clr-primary);
+		}
+	}
+}

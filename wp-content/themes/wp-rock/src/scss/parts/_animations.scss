@@ -1,0 +1,128 @@
+//@import '../parts/mixin';
+
+@keyframes move-out {
+	from {
+		transform: translateY(0%);
+	}
+
+	to {
+		transform: translateY(-100%);
+	}
+}
+
+@keyframes move-in {
+	from {
+		transform: translateY(100%);
+	}
+
+	to {
+		transform: translateY(0%);
+	}
+}
+
+text-animate {
+	opacity: 0;
+}
+.text-animated {
+	opacity: 1;
+}
+.text-animate-word {
+	position: relative;
+	overflow: hidden;
+	display: -webkit-inline-box;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	line-height: inherit;
+}
+.text-animate-word.animated > * {
+	-webkit-transform: translateY(0);
+	transform: translateY(0);
+	opacity: 1;
+}
+.text-animate-word > * {
+	display: inline-block;
+	-webkit-transform: translateY(100%);
+	transform: translateY(100%);
+	opacity: 0;
+	-webkit-transition: 1s;
+	transition: 1s;
+	-webkit-transform-origin: left top;
+	transform-origin: left top;
+}
+.text-animate__word > span {
+	display: inline-block;
+	-webkit-transform: translateY(100%);
+	transform: translateY(100%);
+	opacity: 0;
+	-webkit-transition: 1s;
+	transition: 1s;
+	-webkit-transform-origin: left top;
+	transform-origin: left top;
+}
+.text-animate__word.animated > span {
+	-webkit-transform: translateY(0);
+	transform: translateY(0);
+	opacity: 1;
+}
+.rellax-img {
+	height: 120% !important;
+	top: -5% !important;
+}
+@media (max-width: 991px) {
+	.rellax-img {
+		height: 140% !important;
+		top: -10% !important;
+	}
+}
+.slideUp {
+	transform: translateY(50px);
+	opacity: 0;
+	transition: opacity var(--transition-2), transform var(--transition-2);
+}
+.slideLeft {
+	transform: translateX(100px);
+	opacity: 0;
+	transition: opacity var(--cubic-1), transform var(--cubic-1);
+}
+.slideLeft-2 {
+	transform: translateX(300px);
+	opacity: 0;
+	transition: opacity var(--transition-2), transform var(--transition-2);
+}
+.slideRight {
+	transform: translateX(-100px);
+	opacity: 0;
+	transition: opacity var(--transition-2), transform var(--transition-2);
+}
+.slideRight-2 {
+	transform: translateX(-300px);
+	opacity: 0;
+	transition: opacity var(--transition-2), transform var(--transition-2);
+}
+.fadeIn {
+	opacity: 0;
+	transition: opacity var(--transition-2);
+}
+@keyframes moveSlideshow {
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+.animated.slideRight,
+.animated.slideLeft,
+.animated.slideLeft-2,
+.animated.slideRight-2,
+.animated.slideUp,
+.animated.fadeIn {
+	opacity: 1;
+	transform: none;
+}
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

@@ -12,7 +12,6 @@ const WebpackBar = require('webpackbar'); // Display elegant progress bar while 
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin'); // To optimize (compress) all images using
 const CopyPlugin = require('copy-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 module.exports = (projectOptions) => {
     /**
@@ -26,26 +25,19 @@ module.exports = (projectOptions) => {
         exclude: /(node_modules|bower_components|vendor)/,
         use: [
             MiniCssExtractPlugin.loader,
-            // Creates `style` nodes
-            // from JS strings. Will create separate file for styles
-            'css-loader', // Translates CSS into CommonJS
+            'css-loader',
             {
-                // loads the PostCSS loader
                 loader: 'postcss-loader',
-                options: require(projectOptions.projectCss.postCss)(
-                    projectOptions
-                ),
+                options: require(projectOptions.projectCss.postCss)(projectOptions),
             },
         ],
     };
 
     if (projectOptions.projectCss.use === 'scss') {
-        // if chosen Sass then we're going to add the Sass loader
         cssRules.use.push({
-            // Compiles Sass to CSS
             loader: 'sass-loader',
             options: {
-                sassOptions: { importer: magicImporter() }, // add magic import functionalities to sass
+                sassOptions: { importer: magicImporter() },
             },
         });
     }
@@ -54,10 +46,10 @@ module.exports = (projectOptions) => {
      * JavaScript rules
      */
     const jsRules = {
-        test: projectOptions.projectJs.rules.test,
+        test: /\.m?js$/,
         include: projectOptions.projectJsPath,
         exclude: /(node_modules|bower_components|vendor)/,
-        use: ['babel-loader', 'ts-loader'], // Configurations in "webpack/babel.config.js" and "webpack/tsconfig.js"
+        use: ['babel-loader'], // Configurations in "webpack/babel.config.js"
     };
 
     /**
@@ -72,7 +64,6 @@ module.exports = (projectOptions) => {
                     outputPath: 'images/',
                     publicPath: '../images/',
                     name: '[name].[ext]',
-                    // name: '[name].[ext]?[hash]',
                 },
             },
         ],
@@ -85,8 +76,8 @@ module.exports = (projectOptions) => {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
         generator: {
-            publicPath: '../fonts/', // setting how it will be in css file
-            outputPath: 'fonts/', // setting where should be placed file
+            publicPath: '../fonts/',
+            outputPath: 'fonts/',
             filename: '[name][ext]',
         },
     };
@@ -96,18 +87,7 @@ module.exports = (projectOptions) => {
      */
     const optimizations = {
         minimizer: [
-            // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
-            // `...`,
             new CssMinimizerPlugin(),
-
-            // JS minification
-            new TerserWebpackPlugin({
-                                        terserOptions: {
-                                            compress: {
-                                                drop_console: true,  // Optional: Remove console logs
-                                            },
-                                        },
-                                    }),
         ],
         minimize: true,
     };
@@ -116,15 +96,11 @@ module.exports = (projectOptions) => {
      * Plugins
      */
     const plugins = [
-        new WebpackBar(), // Adds loading bar during builds
-        // Uncomment this to enable profiler https://github.com/nuxt-contrib/webpackbar#options
-        // { reporters: [ 'profile' ], profile: true }
+        new WebpackBar(),
         new MiniCssExtractPlugin({
-            // Extracts CSS files
             filename: projectOptions.projectCss.filename,
         }),
         new CopyPlugin({
-            // Copies images from src to public
             patterns: [
                 {
                     from: projectOptions.projectImagesPath,
@@ -133,12 +109,10 @@ module.exports = (projectOptions) => {
             ],
         }),
         new ImageMinimizerPlugin({
-            // Optimizes images
             minimizerOptions: projectOptions.projectImages.minimizerOptions,
         }),
     ];
 
-    // Add browserSync to plugins if enabled
     if (projectOptions.browserSync.enable === true) {
         const browserSyncOptions = {
             files: projectOptions.browserSync.files,

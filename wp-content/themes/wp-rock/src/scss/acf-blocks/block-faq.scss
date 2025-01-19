@@ -1,6 +1,19 @@
-@import "../parts/variables";
-@import "../parts/mixin";
+@import '../parts/mixin';
 
-.block-example {
-    
+.faq-section {
+
+}
+
+@include minMedia(xl) {
+    .faq-img {
+        padding-top: 90%;
+        border-radius: var(--rd-2);
+        margin-right: clamp(1rem, -0.3295rem + 3.6994vw, 3rem); // 48 -16
+        &::before {
+            content: '';
+            @include beforeFull;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+    }
 }

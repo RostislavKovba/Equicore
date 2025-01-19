@@ -3,86 +3,39 @@
  * Webpack's configurations for the production environment
  * based on the script from package.json
  * Run with: "npm run prod" or "npm run prod:watch"
- *
- * @since 1.0.0
  */
 const glob = require('glob-all');
-const path = require('path'); // A tool to remove unused CSS
+const path = require('path');
 
 module.exports = (projectOptions) => {
-    process.env.NODE_ENV = 'production'; // Set environment level to 'production'
+    process.env.NODE_ENV = 'production';
 
-    /**
-     * The base skeleton
-     */
     const Base = require('./config.base')(projectOptions);
 
-    /**
-     * CSS rules
-     */
     const cssRules = {
         ...Base.cssRules,
-        ...{
-            // add CSS rules for production here
-        },
     };
 
-    /**
-     * JS rules
-     */
     const jsRules = {
         ...Base.jsRules,
-        ...{
-            // add JS rules for production here
-        },
     };
 
-    /**
-     * Image rules
-     */
     const imageRules = {
         ...Base.imageRules,
-        ...{
-            // add image rules for production here
-        },
     };
 
-    /**
-     * font rules
-     */
     const fontRules = {
         ...Base.fontRules,
-        ...{
-            // add image rules for development here
-        },
     };
 
-    /**
-     * Optimizations rules
-     */
     const optimizations = {
         ...Base.optimizations,
     };
 
-    /**
-     * Plugins
-     */
     const plugins = [
         ...Base.plugins,
-        /* ...[
-            new PurgecssPlugin({
-                // Scans files and removes unused CSS
-                paths: glob.sync(projectOptions.projectCss.purgeCss.paths, {
-                    nodir: true,
-                }),
-            }),
-            // add plugins for production here
-        ], */
     ];
 
-    /**
-     * Add sourcemap for production if enabled
-     */
     const sourceMap = { devtool: false };
     if (
         projectOptions.projectSourceMaps.enable === true &&
@@ -92,12 +45,9 @@ module.exports = (projectOptions) => {
         sourceMap.devtool = projectOptions.projectSourceMaps.devtool;
     }
 
-    /**
-     * The configuration that's being returned to Webpack
-     */
     return {
         mode: 'production',
-        entry: projectOptions.projectJs.entry, // Define the starting point of the application.
+        entry: projectOptions.projectJs.entry,
         output: {
             path: projectOptions.projectOutput,
             filename: projectOptions.projectJs.filename,
@@ -108,7 +58,7 @@ module.exports = (projectOptions) => {
         plugins,
         resolve: {
             modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-            extensions: ['.ts', '.js', '.json'],
+            extensions: ['.js', '.json'],
         },
     };
 };

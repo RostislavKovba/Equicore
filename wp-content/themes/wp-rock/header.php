@@ -48,12 +48,12 @@ if ( function_exists( 'get_field' ) ) {
 <body <?php body_class( $page_class ); ?>>
     <?php do_action( 'wp_rock_after_open_body_tag' ); ?>
 
-    <?php do_action( 'wp_rock_before_site_header' ); ?>
-
-    <?php echo esc_html( get_template_part( 'src/template-parts/custom', 'header' ) ); ?>
-
-    <?php do_action( 'wp_rock_after_site_header' ); ?>
-
     <div id="content-block">
+
+        <?php do_action( 'wp_rock_before_site_header' ); ?>
+
+        <?php echo esc_html( get_template_part( 'src/template-parts/custom', 'header' ) ); ?>
+
+        <?php do_action( 'wp_rock_after_site_header' ); ?>
 
         <main id="main-wrapper">

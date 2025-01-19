@@ -20,10 +20,12 @@ function px_site_scripts() {
     // Load our main stylesheet.
     wp_enqueue_style( 'wp-rock-style', STYLE_URI, $general_style_ver );
 
+    wp_enqueue_style( 'bootstrap', ASSETS_CSS . 'vendors/bootstrap-grid.css', array(), $custom_style_ver );
+    wp_enqueue_style( 'lightgallery', ASSETS_CSS . 'vendors/lightgallery.min.css', array(), $custom_style_ver );
     wp_enqueue_style( 'wp-rock_style', ASSETS_CSS . 'frontend.css', array(), $custom_style_ver );
 
-    wp_enqueue_style( 'swiper_css', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css', array(), null );
-    wp_style_add_data( 'swiper_css', 'async', true );
+//    wp_enqueue_style( 'swiper_css', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css', array(), null );
+//    wp_style_add_data( 'swiper_css', 'async', true );
 
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
         wp_enqueue_script( 'comment-reply' );
@@ -36,6 +38,10 @@ function px_site_scripts() {
         }
     }
 
+//    wp_enqueue_script( 'infobox_js', ASSETS_JS . 'vendors/infobox.js', array( 'jquery' ), $custom_js_ver, true );
+    wp_enqueue_script( 'lightgallery_js', ASSETS_JS . 'vendors/lightgallery-all.min.js', array( 'jquery' ), $custom_js_ver, true );
+    wp_enqueue_script( 'markerclusterer_js', ASSETS_JS . 'vendors/markerclusterer.js', array( 'jquery' ), $custom_js_ver, true );
+    wp_enqueue_script( 'swiper_js', ASSETS_JS . 'vendors/swiper-bundle.min.js', array( 'jquery' ), $custom_js_ver, true );
     wp_enqueue_script( 'frontend_js', ASSETS_JS . 'frontend.js', array( 'jquery' ), $custom_js_ver, true );
 
     $vars = array(

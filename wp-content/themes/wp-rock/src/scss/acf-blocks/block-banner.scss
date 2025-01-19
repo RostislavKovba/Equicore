@@ -1,6 +1,87 @@
-@import "../parts/variables";
-@import "../parts/mixin";
+@import '../parts/mixin';
 
-.block-example {
+/*--------------------*/
+/*  BANNER            */
+/*--------------------*/
+.banner {
+    position: relative;
+}
 
+.banner-media {
+    position: absolute;
+    overflow: hidden;
+    z-index: 0;
+    inset: 0;
+
+    img,
+    video {
+        z-index: 0;
+        @include objectFit;
+    }
+}
+
+.banner-align {
+    position: relative;
+    z-index: 1;
+    display: table-cell;
+    vertical-align: middle;
+    width: rem(10000);
+    height: auto;
+
+    &.align-bottom {
+        vertical-align: bottom;
+    }
+
+    &.align-top {
+        vertical-align: top;
+    }
+}
+
+@include minMedia(xs) {
+    .banner {
+        --clr-title: #e6e2dc;
+        --clr-text: rgba(255, 255, 255);
+        margin-top: calc(var(--h-height) * -1);
+    }
+
+    .banner-media {
+        &::before {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    .banner-align {
+        padding-block: calc(var(--h-height) + 1rem) clamp(2.875rem, 1.4624rem + 3.9306vw, 5rem);
+        height: 40rem;
+    }
+
+    .banner-info {
+        > * + * {
+            margin-top: rem(8);
+        }
+    }
+}
+@include minMedia(sm) {
+    .banner {
+        &.full {
+            .banner-align {
+                height: var(--svh);
+            }
+        }
+    }
+    .banner-info {
+        margin-left: 1rem;
+    }
+}
+
+.banner-section {
+    opacity: 1;
+    padding-block: 0;
+    overflow-x: clip;
+    overflow-y: visible;
+    animation: fadeIn 0.5s ease both;
 }
