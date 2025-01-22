@@ -1,10 +1,5 @@
 @import "../parts/mixin";
 
-.glr-row {
-    --bs-gutter-x: 1.25rem;
-    --bs-gutter-y: 1.25rem;
-}
-
 .gallery-section {
     @include minMedia(xl) {
         .lightbox-gallery:not(.swiper-wrapper) > *:first-child {
@@ -69,13 +64,18 @@
             }
         }
     }
+
+    .glr-row {
+        --bs-gutter-x: 1.25rem;
+        --bs-gutter-y: 1.25rem;
+    }
 }
 
 .glr-item {
     position: relative;
     overflow: hidden;
     display: block;
-    width: 100%;
+    //width: 100%;
     border-radius: var(--rd-2);
     aspect-ratio: 1.25;
 }
@@ -271,5 +271,123 @@
     .glr-btn {
         text-align: center;
         margin-top: 1.625rem;
+    }
+}
+
+
+/*--------------------*/
+/*  Pagination        */
+/*--------------------*/
+.pagination {
+    --size: 3.5rem;
+    --font-size: 1.25rem;
+    --gap: 1rem;
+    position: relative;
+    display: block;
+    margin-top: max(0.875rem, 2.5vw);
+
+    ul {
+        line-height: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--gap);
+    }
+
+    li {
+        flex-shrink: 0;
+        display: inline-block;
+        position: relative;
+        width: max-content;
+        height: auto;
+        text-align: center;
+        font-size: var(--font-size);
+        font-weight: 300;
+        line-height: var(--size);
+        color: var(--clr-primary);
+        &:not(.pag-arrow) {
+            line-height: calc(var(--size) / 2);
+        }
+        &:not(.pag-arrow) a {
+            opacity: 0.5;
+            border-bottom: rem(1) solid transparent;
+        }
+        &.pag-arrow {
+            width: var(--size);
+            height: var(--size);
+            border-radius: 100%;
+            border: rem(1) solid currentColor;
+        }
+    }
+
+    a {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+    }
+
+    .dots {
+        pointer-events: none;
+    }
+
+    .pag-arrow {
+        opacity: 0.5;
+        transition: var(--transition-1);
+
+        a {
+            &::before {
+                content: '';
+                position: absolute;
+                z-index: 2;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 70%;
+                height: 70%;
+                background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Frame' clip-path='url(%23clip0_2131_6394)'%3E%3Cpath id='Vector' d='M4.63776 10.413L15.3622 10.413M15.3622 10.413L14.1196 9.47469C13.0282 8.65061 12.0547 7.68116 11.2261 6.59328L10.2145 5.26527M15.3622 10.413L14.4337 11.0762C13.1361 12.0031 11.9946 13.1309 11.0522 14.4172L10.2145 15.5607' stroke='black' stroke-width='0.666667' stroke-linecap='square'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_2131_6394'%3E%3Crect width='14' height='14' fill='white' transform='translate(10 0.101562) rotate(45)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A")
+                            no-repeat center / contain;
+                transform: translate(-50%, -50%) rotate(180deg);
+                transition: var(--transition-1);
+            }
+        }
+
+        &:last-child {
+            transform: rotate(180deg);
+        }
+    }
+
+    li.active {
+        a {
+            opacity: 1;
+            pointer-events: none;
+            color: var(--clr-primary);
+            border-color: var(--clr-primary);
+        }
+    }
+}
+
+@include minMedia(xl) {
+    .pagination li {
+        a:hover {
+            color: var(--clr-primary);
+        }
+
+        &.pag-arrow:hover {
+            opacity: 1;
+            & a:before {
+                background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Frame' clip-path='url(%23clip0_2131_6394)'%3E%3Cpath id='Vector' d='M4.63776 10.413L15.3622 10.413M15.3622 10.413L14.1196 9.47469C13.0282 8.65061 12.0547 7.68116 11.2261 6.59328L10.2145 5.26527M15.3622 10.413L14.4337 11.0762C13.1361 12.0031 11.9946 13.1309 11.0522 14.4172L10.2145 15.5607' stroke='%23ab5e34' stroke-width='0.666667' stroke-linecap='square'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_2131_6394'%3E%3Crect width='14' height='14' fill='white' transform='translate(10 0.101562) rotate(45)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A")
+                            no-repeat center / contain;
+            }
+        }
+    }
+}
+
+@include maxMedia(sm) {
+    .pagination {
+        --size: 2.55rem;
+        --font-size: 1rem;
+        --gap: 0.625rem;
     }
 }

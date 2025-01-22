@@ -1,0 +1,107 @@
+@import '../parts/mixin';
+
+/*--------------------*/
+/*  Form Block        */
+/*--------------------*/
+.cta-block {
+    --space: 1.5rem;
+
+    .row {
+        --bs-gutter-x: var(--space);
+        --bs-gutter-y: var(--space);
+    }
+
+    > * {
+        margin-bottom: var(--space);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+@include maxMedia(xl) {
+    .cta-block {
+        --space: 1.25rem;
+    }
+}
+
+@include maxMedia(lg) {
+    .cta-block {
+        --space: 1rem;
+    }
+}
+
+// cta styles
+
+.cta-content {
+    --pd: 3.5rem;
+    --bg: var(--clr-grey);
+
+    background-color: var(--bg);
+    padding: var(--pd);
+    border-radius: var(--rd-2);
+    height: 100%;
+}
+
+.cta-item {
+    & > * + * {
+        margin-top: rem(4);
+    }
+}
+
+.cta-item-title {
+    color: var(--clr-title);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.25;
+}
+
+.cta-img {
+    aspect-ratio: 1;
+    border-radius: var(--rd-2);
+
+    &::before {
+        content: '';
+        z-index: 1;
+        @include beforeFull;
+        background: rgba(0, 0, 0, 0.2);
+    }
+}
+
+@include minMedia(md) {
+    .cta-items {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .cta-img {
+        aspect-ratio: 1.45;
+    }
+}
+
+@include maxMedia(md) {
+    .cta-items {
+        & > * + * {
+            margin-top: 2rem;
+        }
+    }
+}
+
+@include maxMedia(xl) {
+    .cta-content {
+        --pd: 2rem;
+
+        padding-inline: calc(var(--pd) / 2);
+
+        & > .title {
+            margin-bottom: 2rem;
+        }
+    }
+    .cta-img {
+        height: 100%;
+    }
+}

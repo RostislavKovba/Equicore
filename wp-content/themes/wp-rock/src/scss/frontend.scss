@@ -1,11 +1,12 @@
 @import 'parts/mixin';
+@import 'parts/global';
 @import 'parts/variables';
 @import 'parts/normalize';
 
 @import 'parts/fonts';
-@import 'parts/global';
 @import 'parts/typography';
 @import 'parts/animations';
+@import 'parts/accordion';
 @import 'parts/button';
 @import 'parts/header';
 @import 'parts/footer';

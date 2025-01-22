@@ -378,8 +378,9 @@ class WP_Rock {
         register_nav_menus(
             array(
                 'primary_menu' => __( 'Primary Menu', 'wp-rock' ),
-                'footer_menu'  => __( 'Footer Menu', 'wp-rock' ),
-                'mobile_menu'  => __( 'Mobile menu', 'wp-rock' ),
+                'footer_menu_1'  => __( 'Footer Menu 1', 'wp-rock' ),
+                'footer_menu_2'  => __( 'Footer Menu 2', 'wp-rock' ),
+                'footer_menu_3'  => __( 'Footer Menu 3', 'wp-rock' ),
             )
         );
 
@@ -419,7 +420,7 @@ class WP_Rock {
         $this->px_remove_archive_word_from_title();
 
         // force remove cycling links.
-        $this->px_no_link_current_page();
+//        $this->px_no_link_current_page();
 
         add_post_type_support( 'page', 'excerpt' );
 

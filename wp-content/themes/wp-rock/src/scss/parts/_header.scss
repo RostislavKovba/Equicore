@@ -36,6 +36,15 @@ header {
     }
 }
 
+:has(#wpadminbar) {
+    .h-wrap {
+        top: 32px;
+        @media screen and ( max-width: 782px ) {
+            top: 46px;
+        }
+    }
+}
+
 .h-wrap {
     --h-bg: linear-gradient(90deg, rgba(28, 28, 28, 0.25) 0%, rgba(0, 0, 0, 0.25) 100%);
     --h-border: var(--clr-border-2);
@@ -92,7 +101,7 @@ header.scrolled {
     }
 }
 
-.h-drop-list,
+.sub-menu,
 .h-menu-overlay {
     display: none;
 }
@@ -214,13 +223,13 @@ header.scrolled {
 .h-links {
     margin-block: auto;
 
-    ul {
+    & > ul {
         display: inline-flex;
         align-items: flex-start;
         flex-direction: column;
         gap: clamp(1rem, -0.9942rem + 5.5491vw, 4rem); // 64 - 16px;
 
-        li {
+        & > li {
             --iconSz: 1rem;
             position: relative;
             padding-left: calc(var(--iconSz) + 2rem);
@@ -238,7 +247,7 @@ header.scrolled {
             }
 
             & > a,
-            & > .h-drop b {
+            & > .menu-item-has-children b {
                 font-family: var(--ff-2);
                 font-size: var(--h4);
                 line-height: 1.15;
@@ -249,12 +258,12 @@ header.scrolled {
         }
     }
 }
-.h-drop {
+.menu-item-has-children {
     & > * + * {
-        margin-top: rem(12);
+        margin-top: 1rem;
     }
 }
-.h-drop-list {
+.sub-menu {
     gap: rem(12);
     display: flex;
     line-height: 1.42;
@@ -366,7 +375,7 @@ header.scrolled {
             }
         }
     }
-    .h-drop-list {
+    .sub-menu {
         align-items: center;
     }
 }

@@ -16,32 +16,22 @@ global $global_options;
                 <a class="h-logo" href="index.php" aria-label="Company logo">
                     <img width="88" height="40" src="img/logo.svg" alt="" loading="eager" />
                 </a>
+
                 <!-- h-menu -->
                 <div class="h-menu">
                     <div class="btn-close type-2">
                         <span>закрити</span>
                     </div>
                     <div class="container animate" data-animate='{"target": ".slideUp",  "delay": 250}'>
-                        <nav class="h-links">
-                            <ul>
-                                <li class="slideUp"><a href="about.php">про нас</a></li>
-                                <li class="slideUp">
-                                    <div class="h-drop">
-                                        <b>послуги</b>
-                                        <div class="h-drop-list">
-                                            <a href="service-single.php">постій коней </a>
-                                            <a href="service-single-2.php">тренування</a>
-                                            <a href="service-single-3.php">фотосесії</a>
-                                            <a href="service-single.php">кінна школа</a>
-                                            <a href="service.php">готель</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="slideUp"><a href="team.php">команда</a></li>
-                                <li class="slideUp"><a href="competitions.php">турніри</a></li>
-                                <li class="slideUp"><a href="gallery.php">галерея</a></li>
-                            </ul>
-                        </nav>
+
+                        <?php wp_nav_menu(
+                            array(
+                                'theme_location'  => 'primary_menu',
+                                'menu_class'      => '',
+                                'container'       => 'nav',
+                                'container_class' => 'h-links',
+                            )
+                        ); ?>
                         <!-- h-contacts -->
                         <div class="h-contacts d-sm-none">
                             <a href="contact.php" class="h-contacts-link type-2">Контакти</a>

@@ -1,5 +1,110 @@
 @import "../parts/mixin";
 
-.block-example {
+/*--------------------*/
+/*  Team              */
+/*--------------------*/
+.team {
+    & [class*='swiper-button'] {
+        display: block;
+    }
+}
 
+.team-content {
+    & > * + * {
+        margin-top: 0.5rem;
+    }
+}
+.team-slider {
+    & > * + * {
+        margin-top: 1rem;
+    }
+}
+.team-item_desc {
+    position: absolute;
+    text-align: left;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(90deg, rgba(28, 28, 28, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+    backdrop-filter: blur(2.5px);
+    padding: rem(12) rem(16);
+    & > * + * {
+        margin-top: rem(2);
+    }
+    .text {
+        font-size: rem(13);
+        opacity: 0.8;
+    }
+}
+
+.team-btn {
+    margin-top: 1.5rem;
+    > .btn-icon {
+        color: var(--clr-title);
+    }
+}
+.team-item {
+    text-align: center;
+}
+
+.team-img {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--rd-2);
+    padding-top: 120%;
+    &::before {
+        z-index: 1;
+        @include beforeFull;
+        background-color: rgba(0, 0, 0, 0.1);
+        transition: var(--transition-1);
+    }
+
+    img {
+        @include objectFit;
+    }
+}
+
+@include minMedia(xl) {
+    .team-slider {
+        .swiper-controls-wrap {
+            position: absolute;
+            right: calc(-1 * (var(--sw-btn) + var(--sp-md)));
+
+            top: 50%;
+            transform: translateY(-50%);
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--sp-xs);
+            justify-content: center;
+            & > .swiper-pagination {
+                margin-top: 0;
+            }
+            & [class*='swiper-button'] {
+                inset: unset;
+            }
+            & > * {
+                position: relative;
+            }
+        }
+    }
+}
+
+@include minMedia(xl) {
+    .team-item:hover {
+        > .team-img {
+            &::before {
+                background-color: rgba(0, 0, 0, 0);
+            }
+        }
+    }
+}
+
+@include maxMedia(md) {
+    .team-img {
+        &::before {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+    }
 }

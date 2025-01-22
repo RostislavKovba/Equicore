@@ -61,6 +61,7 @@ var __webpack_exports__ = {};
   \***************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scss_backend_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/backend.scss */ "./src/scss/backend.scss");
+/* eslint-disable */
 /**
  * SASS
  */
@@ -68,10 +69,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /**
  * JavaScript
- */
-
-/**
- * Add here your JavasScript code
  */
 }();
 /******/ })()

@@ -25,6 +25,7 @@ require THEME_DIR . '/src/inc/analytics-settings.php';
 require THEME_DIR . '/src/inc/acf-setting.php';
 require THEME_DIR . '/src/inc/custom-posts-type.php';
 require THEME_DIR . '/src/inc/custom-taxonomies.php';
+require THEME_DIR . '/src/inc/custom-translations.php';
 require THEME_DIR . '/src/inc/woocommerce-customization.php';
 require THEME_DIR . '/src/inc/class-wp-rock-blocks.php';
 require THEME_DIR . '/src/inc/ajax-requests.php';
@@ -33,3 +34,9 @@ require THEME_DIR . '/src/inc/custom-hooks.php';
 require THEME_DIR . '/src/inc/custom-shortcodes.php';
 require THEME_DIR . '/src/inc/class-mobile-detect.php';
 
+function debug($data) {
+    echo '<pre class="debug">';
+//        var_dump($data);
+    print_r($data);
+    echo '</pre>';
+}

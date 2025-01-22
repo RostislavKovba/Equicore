@@ -437,4 +437,5 @@ jQuery(function ($) {
             textAnimateObserver.observe(element);
         });
     }, 1000);
+
 });

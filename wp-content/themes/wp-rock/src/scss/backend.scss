@@ -1,17 +1,18 @@
 @import 'parts/mixin';
+@import 'parts/global';
+@import 'parts/variables';
 
 :root {
-    --root-scale: 16px!important;
     --text-lg: 1rem;
     --text: 1rem;
     --text-sm: 1rem;
+    font-size: 16px;
 }
 
 html :where(.wp-block) {
     max-width: 100%;
     margin-top: 0;
     margin-bottom: 0;
-    //font-size: 16px!important;
 }
 
 .block-editor-block-list__layout {
@@ -28,10 +29,21 @@ html :where(.wp-block) {
 }
 
 :where(.acf-block-preview) {
-    @import 'parts/global';
+    @import 'parts/normalize';
     @import 'parts/typography';
     @import 'parts/fonts';
+    @import 'parts/accordion';
     @import 'parts/button';
+
+    @import 'swiper/wrapper';
+    @import 'swiper/slide';
+    @import 'swiper/buttons';
+    @import 'swiper/pagination';
+    @import 'swiper/effect-main';
+
+    .container {
+        max-width: 100%;
+    }
 
     section.section {
         opacity: 1;

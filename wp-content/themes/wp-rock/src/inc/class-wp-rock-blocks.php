@@ -1,17 +1,4 @@
 <?php
-
-function disable_quick_edit( $actions = array(), $post = null ) {
-    // Remove the Quick Edit link
-    if (isset($actions['inline hide-if-no-js'])) {
-        unset($actions['inline hide-if-no-js']);
-    }
-    // Return the set of links without Quick Edit
-    return $actions;
-}
-add_filter('post_row_actions', 'disable_quick_edit', 10, 2);
-add_filter('page_row_actions', 'disable_quick_edit', 10, 2);
-
-
 /**
  *  Custom ACF Gutenberg blocks.
  *
@@ -134,10 +121,10 @@ class WP_Rock_Blocks
                     'category' => 'wp-rock',
                     'post_types' => array_key_exists('post_types', $block) ? $block['post_types'] : array('page'),
                     'mode' => array_key_exists('mode', $block) ? $block['mode'] : 'preview',
-                    'multiple' => array_key_exists('multiple', $block) ? $block['multiple'] : false,
                     'supports' => array(
 						'align' => true,
 						'full_height' => true,
+                        'multiple' => array_key_exists('multiple', $block) ? $block['multiple'] : false,
 						'anchor' => true,
 						'color' => array(
 							'gradients' => true,

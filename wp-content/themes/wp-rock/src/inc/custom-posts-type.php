@@ -6,10 +6,12 @@
 add_action('manage_post_posts_columns', 'add_post_thumbnail_column', 4 );
 add_action('manage_team_posts_columns', 'add_post_thumbnail_column', 4 );
 add_action('manage_service_posts_columns', 'add_post_thumbnail_column', 4 );
+add_action('manage_gallery_posts_columns', 'add_post_thumbnail_column', 4 );
 
 add_action('manage_post_posts_custom_column', 'manage_post_thumbnail_column', 5, 2 );
 add_action('manage_team_posts_custom_column', 'manage_post_thumbnail_column', 5, 2 );
 add_action('manage_service_posts_custom_column', 'manage_post_thumbnail_column', 5, 2 );
+add_action('manage_gallery_posts_custom_column', 'manage_post_thumbnail_column', 5, 2 );
 
 add_action('admin_head', 'admin_custom_column_styles');
 function admin_custom_column_styles() {

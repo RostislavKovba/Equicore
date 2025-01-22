@@ -69,6 +69,7 @@ const entryPoints = [
 
 const entries = generateEntryPoints(entryPoints);
 
+entries.swiper = `${projectPaths.projectJsPath}/swiper.js`;
 entries.frontend = `${projectPaths.projectJsPath}/frontend.js`;
 entries.backend = `${projectPaths.projectJsPath}/backend.js`;
 
@@ -129,7 +130,7 @@ const projectFiles = {
             plugins: [
                 ['gifsicle', { interlaced: true }],
                 ['jpegtran', { progressive: true }],
-                ['optipng', { optimizationLevel: 5 }],
+                ['optipng', { optimizationLevel: 1 }],
                 ['svgo', { plugins: [{ removeViewBox: false }] }],
             ],
         },

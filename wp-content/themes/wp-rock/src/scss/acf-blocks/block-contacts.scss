@@ -1,0 +1,93 @@
+@import '../parts/mixin';
+
+/*--------------------*/
+/*  Contacts          */
+/*--------------------*/
+
+.contact-item {
+    display: flex;
+    align-items: center;
+}
+
+.contact-item-img {
+    --size: 2.625rem;
+    position: relative;
+    align-self: flex-start;
+    flex-shrink: 0;
+    width: var(--size);
+    height: var(--size);
+    margin-right: 4%;
+    border-radius: 100%;
+    border: rem(1) solid #e6cfc4;
+    margin-top: rem(6);
+
+    img {
+        @include centerAbsolute;
+        max-width: 50%;
+        max-height: 50%;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.contact-item-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--clr-title);
+    line-height: 1.5em;
+
+    b {
+        font-weight: 400;
+        @include lines(3);
+    }
+    p {
+        text-decoration: underline;
+    }
+
+    > * + * {
+        margin-top: 0.25rem;
+    }
+}
+
+.contact-block {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    padding-top: max(22.5rem, 36vw);
+    border-radius: var(--rd-2);
+
+    iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.map {
+    position: absolute;
+    inset: 0;
+}
+
+@include minMedia(xl) {
+    .contact-item-info {
+        a:hover {
+            color: var(--clr-primary);
+        }
+    }
+
+    .map-filter-list {
+        li:hover {
+            color: var(--clr-primary);
+        }
+    }
+}
+
+@include maxMedia(sm) {
+    .contact-item-img {
+        --size: 2.5rem;
+    }
+}
