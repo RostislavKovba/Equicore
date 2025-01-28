@@ -37,7 +37,13 @@ module.exports = (projectOptions) => {
         cssRules.use.push({
             loader: 'sass-loader',
             options: {
-                sassOptions: { importer: magicImporter() },
+                sassOptions: {
+                    importer: magicImporter(),
+                    silenceDeprecations: ['legacy-js-api', 'import', 'mixed-decls', 'color-functions', 'global-builtin'],
+                    // If set to true, Sass won’t print warnings that are caused by dependencies (like bootstrap):
+                    // https://sass-lang.com/documentation/js-api/interfaces/options/#quietDeps
+                    quietDeps: true,
+                }, // add magic import functionalities to sass
             },
         });
     }
@@ -108,9 +114,9 @@ module.exports = (projectOptions) => {
                 },
             ],
         }),
-        new ImageMinimizerPlugin({
-            minimizerOptions: projectOptions.projectImages.minimizerOptions,
-        }),
+        // new ImageMinimizerPlugin({
+        //     minimizerOptions: projectOptions.projectImages.minimizerOptions,
+        // }),
     ];
 
     if (projectOptions.browserSync.enable === true) {

@@ -5,18 +5,22 @@
  * @package WP-rock
  */
 
+global $global_options;
+
+$socials_title = get_field_value($global_options, 'footer_socials_title');
 ?>
 <footer itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Name company" />
+    <meta itemprop="name" content="<?php bloginfo('name'); ?>" />
 
     <div class="container-fluid px-md">
         <div class="footer-top">
             <div class="row justify-content-between">
+
+                <!-- Logo -->
                 <div class="col-12 col-md-auto">
-                    <a class="footer-logo" href="index.php" aria-label="Company logo">
-                        <img width="160" height="76" src="img/logo.svg" alt="" loading="lazy" />
-                    </a>
+                    <?php echo WP_Rock::custom_logo('footer-logo'); ?>
                 </div>
+
                 <div class="col-6 col-lg-auto text-left">
                     <nav class="footer-links">
                         <div class="footer-links-title title">
@@ -30,9 +34,8 @@
                             )
                         ); ?>
                     </nav>
-
-
                 </div>
+
                 <div class="col-6 col-lg-auto text-left">
                     <nav class="footer-links">
                         <div class="footer-links-title title">
@@ -47,6 +50,7 @@
                         ); ?>
                     </nav>
                 </div>
+
                 <div class="col-6 col-lg-auto text-left">
                     <nav class="footer-links">
                         <div class="footer-links-title title">
@@ -62,43 +66,19 @@
                     </nav>
                 </div>
 
+                <!-- Socials -->
                 <div class="col-6 col-lg-auto text-left">
                     <div class="social">
-                        <div class="social-title title">слідкуйте за нами</div>
-                        <ul style="justify-content: flex-start">
-                            <li>
-                                <a href="https://www.instagram.com/" target="_blank" aria-label="you tube">
-                                    <img width="16" height="16" src="img/icons/icon-inst.svg" alt="" loading="lazy" />
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.tiktok.com/" target="_blank" aria-label="facebook">
-                                    <img width="16" height="16" src="img/icons/icon-tiktok.svg" alt="" loading="lazy" />
-                                </a>
-                            </li>
-                        </ul>
+                        <div class="social-title title"><?php echo $socials_title; ?></div>
+
+                        <?php get_template_part('/src/template-parts/links', 'socials') ?>
                     </div>
                 </div>
-                <!-- langs -->
+
+                <!-- Langs -->
                 <div class="col-12">
                     <div class="footer-langs">
-                        <ul>
-
-                            <?php
-                            $languages = pll_the_languages( ['raw'=>true] );
-
-                            foreach( $languages as $lang ) : ?>
-
-                                <li><a href="<?php echo $lang['url']; ?>"
-                                       lang="<?php echo $lang['slug']; ?>"
-                                       hreflang="<?php echo $lang['slug']; ?>"
-                                       class="<?php echo $lang['current_lang'] ? 'active' : '' ?>">
-                                        <?php echo pll__($lang['name']); ?>
-                                    </a>
-                                </li>
-
-                            <?php endforeach; ?>
-                        </ul>
+                        <?php get_template_part('/src/template-parts/links', 'lang') ?>
                     </div>
                 </div>
             </div>
@@ -109,16 +89,19 @@
         <div class="footer-bottom">
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-4 order-2 order-lg-1">
-                    <div class="footer-copy">
-                        <div>Terms & Conditions</div>
-                        <a href="privacy.php">Privacy Policy</a>
-                    </div>
+                    <?php wp_nav_menu(
+                        array(
+                            'theme_location'  => 'footer_terms',
+                            'menu_class'      => 'footer-copy',
+                            'container'       => false,
+                        )
+                    ); ?>
                 </div>
 
                 <div class="col-lg-4 order-2 order-lg-2">
-                    <a class="dev-link" href="#">
+                    <a class="dev-link" target="_blank" href="https://spaceweb.com.ua/">
                         <span>Developed by</span>
-                        <img width="102" height="14" src="img/SpaceWeb-logo.svg" alt="SpaceWeb logo" loading="lazy" />
+                        <img width="102" height="14" src="<?php echo ASSETS_IMG ?>/SpaceWeb-logo.svg" alt="SpaceWeb logo" loading="lazy" />
                     </a>
                 </div>
             </div>

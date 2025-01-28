@@ -34,6 +34,7 @@ html :where(.wp-block) {
     @import 'parts/fonts';
     @import 'parts/accordion';
     @import 'parts/button';
+    @import 'parts/ctg';
 
     @import 'swiper/wrapper';
     @import 'swiper/slide';
@@ -41,8 +42,10 @@ html :where(.wp-block) {
     @import 'swiper/pagination';
     @import 'swiper/effect-main';
 
-    .container {
+    .container,
+    .container-fluid {
         max-width: 100%;
+        padding-inline: 0!important;
     }
 
     section.section {

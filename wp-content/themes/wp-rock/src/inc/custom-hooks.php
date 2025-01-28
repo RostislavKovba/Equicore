@@ -77,3 +77,37 @@ function my_mce_buttons_2($buttons) {
     return $buttons;
 }
 add_filter('mce_buttons_2', 'my_mce_buttons_2');
+
+
+/**
+ * Adding default blocks to the block editor for custom post types
+ *
+ * @return void
+ */
+function set_post_type_default_blocks() {
+    // post
+    $program_object = get_post_type_object( 'post' );
+    $program_object->template = array(
+        array( 'acf/block-banner' ),
+//        array( 'acf/block-single-related'),
+    );
+
+    // case-study
+    $center_object = get_post_type_object( 'service' );
+    $center_object->template = array(
+        array( 'acf/block-banner' ),
+    );
+
+    // inspiration
+    $center_object = get_post_type_object( 'gallery' );
+    $center_object->template = array(
+//        array( 'acf/block-banner' ),
+    );
+
+    // page
+    $center_object = get_post_type_object( 'page' );
+    $center_object->template = array(
+        array( 'acf/block-banner' ),
+    );
+}
+add_action( 'init', 'set_post_type_default_blocks' );

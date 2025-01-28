@@ -81,6 +81,35 @@ body {
     }
 }
 
+.text > *:has(.title-decor) {
+    margin-top: 1.5rem;
+}
+.title-decor {
+    --text-space: 0.5rem;
+    --imgSz: 0.875rem;
+    --text-li-padding : 1.4rem;
+
+    position: relative;
+    padding-left: var(--text-li-padding);
+    text-transform: uppercase;
+    font-family: var(--ff-2);
+    color: var(--clr-title);
+    font-weight: 500;
+    font-size: 1.25rem;
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: var(--imgSz);
+        height: var(--imgSz);
+        background: url('../img/icons/link-decor.svg');
+        background-size: contain;
+        background-position: center;
+    }
+}
+
 .text .label {
     position: relative;
     display: inline-flex;
@@ -109,6 +138,13 @@ body {
 
 .text b {
     font-weight: 400;
+}
+
+.text {
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--ff-2);
+        text-transform: uppercase;
+    }
 }
 
 .text b,

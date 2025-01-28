@@ -285,10 +285,10 @@ class WP_Rock {
      *
      * @return string
      */
-    public function custom_logo() {
+    public static function custom_logo($class) {
         $custom_logo_id = get_theme_mod( 'custom_logo' );
         $html = sprintf(
-            '<a href="%1$s" class="custom-logo-link" rel="home" itemprop="url">%2$s</a>',
+            '<a href="%1$s" class="'.$class.' custom-logo-link" rel="home" aria-label="Company logo" itemprop="url">%2$s</a>',
             esc_url( home_url( '/' ) ),
             wp_get_attachment_image(
                 $custom_logo_id,
@@ -296,6 +296,7 @@ class WP_Rock {
                 false,
                 array(
                     'class' => 'custom-logo',
+                    'loading' => 'eager'
                 )
             )
         );
@@ -381,6 +382,7 @@ class WP_Rock {
                 'footer_menu_1'  => __( 'Footer Menu 1', 'wp-rock' ),
                 'footer_menu_2'  => __( 'Footer Menu 2', 'wp-rock' ),
                 'footer_menu_3'  => __( 'Footer Menu 3', 'wp-rock' ),
+                'footer_terms'  => __( 'Footer Terms', 'wp-rock' ),
             )
         );
 
@@ -432,6 +434,8 @@ class WP_Rock {
 
         // Enable support for Post Thumbnails on posts and pages.
         add_theme_support( 'post-thumbnails' );
+
+        add_theme_support( 'custom-logo' );
 
         // Add shortcode support in text widgets.
         add_filter( 'widget_text', 'do_shortcode' );

@@ -29,10 +29,7 @@ function px_site_scripts() {
     }
 
     if ( is_404() ) {
-        $page_404_style_file = THEME_DIR . '/assets/public/css/page-404.css';
-        if (file_exists($page_404_style_file) && file_get_contents($page_404_style_file)) {
-            wp_enqueue_style('page_404', ASSETS_CSS . 'page-404.css', array(), null);
-        }
+        wp_enqueue_style('page_404', ASSETS_CSS . '404.css', array(), null);
     }
 
     wp_enqueue_script( 'lightgallery_js', ASSETS_JS . 'vendors/lightgallery-all.min.js', array( 'jquery' ), $custom_js_ver, true );
@@ -66,18 +63,10 @@ add_action(
     'admin_enqueue_scripts',
     function () {
         wp_enqueue_style( 'bootstrap', ASSETS_CSS . 'vendors/bootstrap-grid.css', array(), null );
-        wp_enqueue_style( 'wp-rock_style_admin', ASSETS_CSS . 'backend.css', array(), '1.2.0' );
+        wp_enqueue_style( 'wp-rock_style_admin', ASSETS_CSS . 'backend.css', array(), null );
 
         wp_enqueue_script( 'lightgallery_js', ASSETS_JS . 'vendors/lightgallery-all.min.js', array( 'jquery' ), null, true );
-        wp_enqueue_script(
-            'backend_js',
-            ASSETS_JS . 'backend.js',
-            array(
-                'jquery',
-            ),
-            '1.2.0',
-            true
-        );
+        wp_enqueue_script( 'backend_js', ASSETS_JS . 'backend.js', array('jquery'), null, true );
     },
     99
 );

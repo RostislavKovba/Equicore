@@ -1,0 +1,53 @@
+@import '../parts/mixin';
+
+/*--------------------*/
+/*  LR Block          */
+/*--------------------*/
+.lr-img-1 {
+    position: relative;
+    padding-bottom: 60%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--rd-2);
+    img {
+        @include objectFit;
+    }
+
+    &::before {
+        @include beforeFull;
+        background: linear-gradient(180deg, rgba(23, 21, 19, 0.19) -1.01%, rgba(23, 21, 19, 0.15) 71.28%);
+        z-index: 1;
+    }
+}
+.lr-title {
+    @include lines(2);
+}
+
+.lr-content-1 {
+    > * + * {
+        margin-top: 2rem;
+    }
+    &:has(.lr-title) .text {
+        margin-top: 0.5rem;
+    }
+    &:has(.text.type-2) .text.type-2 {
+        margin-top: var(--sp-xs);
+    }
+    &:has(.label) {
+        > * + * {
+            margin-top: 1.5rem;
+        }
+    }
+
+    @include maxMedia(md) {
+        .lr-img-1 {
+            aspect-ratio: 1.4;
+        }
+        .lr-content-1 {
+            > * + * {
+                margin-top: 1.5rem;
+            }
+        }
+    }
+}
+

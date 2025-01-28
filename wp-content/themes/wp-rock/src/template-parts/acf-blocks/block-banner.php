@@ -16,8 +16,6 @@ $block_id   = isset($args['metadata']['name']) ? str_replace(' ', '', $args['met
 $title      = get_field_value($block_fields, 'title');
 $subtitle   = get_field_value($block_fields, 'subtitle');
 $image      = get_field_value($block_fields, 'image') ?: get_the_post_thumbnail();
-
-//wp_get_attachment_image($image_id, 'full');
 ?>
 
 <section class="section banner-section <?php if (!IS_ADMIN) echo 'animate'?> <?php echo esc_html($class_name); ?>"
@@ -28,9 +26,7 @@ $image      = get_field_value($block_fields, 'image') ?: get_the_post_thumbnail(
     <div class="banner <?php if (!IS_ADMIN) echo 'full'?>">
         <div class="banner-media">
             <picture>
-                <!-- desktop -->
                 <source srcset="<?php echo $image['url']; ?>" type="image/jpg"/>
-
                 <?php echo wp_get_attachment_image($image['id'], 'full', false, [
                     'class' => 'rellax-img',
                     'data-rellax-speed' => '-8.5',
@@ -54,6 +50,3 @@ $image      = get_field_value($block_fields, 'image') ?: get_the_post_thumbnail(
         </div>
     </div>
 </section>
-
-<div class="spacer-lg d-none d-lg-block"></div>
-<div class="spacer-md d-block d-lg-none"></div>

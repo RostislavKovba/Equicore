@@ -5,6 +5,8 @@
 /*--------------------*/
 .banner {
     position: relative;
+    padding-block: 0;
+    margin-bottom: calc(var(--sp-lg) / 2);
 }
 
 .banner-media {

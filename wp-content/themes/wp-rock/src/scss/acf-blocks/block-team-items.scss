@@ -1,0 +1,143 @@
+@import "../parts/mixin";
+
+/*--------------------*/
+/*  LR Block          */
+/*--------------------*/
+
+.block-team-items {
+    .team-item {
+        &:not(:last-of-type) {
+            margin-bottom: 0;
+            @include minMedia(md) {
+                margin-bottom: 2rem;
+            }
+        }
+    }
+}
+
+.lr-3 {
+    --bg: var(--clr-grey);
+    --pd: var(--sp-sm);
+}
+
+.lr-img-3 {
+    position: relative;
+    padding-top: 75%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--rd-2);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    will-change: transform;
+    content-visibility: auto;
+
+    img {
+        @include objectFit;
+    }
+}
+
+.lr-3-labels {
+    --iconSz: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: rem(12) rem(16);
+    color: var(--clr-title);
+    width: 100%;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, rgba(28, 28, 28, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+        backdrop-filter: blur(2.5px);
+    }
+}
+.lr-3-name {
+    position: relative;
+    & > * + * {
+        margin-top: rem(8);
+    }
+    p {
+        font-weight: 300;
+        font-size: rem(13);
+        opacity: 0.8;
+    }
+    &:first-child {
+        opacity: 1;
+        color: var(--clr-title);
+        font-size: rem(20);
+        line-height: 1.3;
+        font-weight: 500;
+    }
+}
+.lr-3-icon {
+    position: relative;
+    flex: 0 0 var(--iconSz);
+    height: var(--iconSz);
+}
+
+.lr-content-3 {
+    height: 100%;
+    place-content: space-evenly;
+    background-color: var(--bg);
+    padding: var(--pd);
+    border-radius: var(--rd-2);
+
+    & > * + * {
+        margin-top: 1rem;
+    }
+    & .text {
+        opacity: 0.8;
+    }
+}
+
+@include maxMedia(sm) {
+    .lr-3 {
+        --pd: 1rem;
+        --clr-title: var(--clr-white);
+    }
+    .lr-content-3 {
+        transform: translateY(100%);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+        transition: var(--cubic-1);
+        .title {
+            font-size: rem(20);
+        }
+    }
+    .lr-img-3 {
+        padding-top: 100%;
+        transition: var(--cubic-1);
+
+        &::before {
+            pointer-events: none;
+            @include beforeFull;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.1);
+            transition: var(--cubic-1);
+        }
+
+        &:hover {
+            &::before {
+                background: rgba(0, 0, 0, 0);
+            }
+            .lr-3-labels {
+                &::before {
+                    backdrop-filter: none;
+                }
+            }
+            .lr-content-3 {
+                --clr-title: var(--clr-black);
+                transform: translateY(0);
+            }
+        }
+    }
+}

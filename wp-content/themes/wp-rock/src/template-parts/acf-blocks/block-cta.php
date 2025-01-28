@@ -3,6 +3,7 @@
  * Block - Call To Action.
  */
 
+global $global_options;
 $block_fields = get_fields();
 
 $disabled = get_field_value($block_fields, 'disabled');
@@ -14,9 +15,11 @@ $class_name = isset($args['className']) ? ' ' . $args['className'] : '';
 $block_id   = isset($args['metadata']['name']) ? str_replace(' ', '', $args['metadata']['name']) : '';
 
 $title      = get_field_value($block_fields, 'title');
-$image      = get_field_value($block_fields, 'image')
+$image      = get_field_value($block_fields, 'image');
 
-//wp_get_attachment_image($image_id, 'full');
+// Contacts info
+$contacts    = get_field_value($global_options, 'contacts');
+$telegram    = get_field_value($global_options, 'telegram');
 ?>
 
 <section class="section <?php if (!IS_ADMIN) echo 'animate'; ?>"
@@ -34,47 +37,18 @@ $image      = get_field_value($block_fields, 'image')
                         </div>
 
                         <div class="cta-items">
-                            <!-- 0 -->
-                            <div class="cta-item fadeIn">
-                                <p class="cta-item-title">Голова клубу</p>
-                                <a href="tel:+380630987529800" class="cta-item-link btn-link">+38 (063) 0987529800</a>
-                            </div>
+                            <?php foreach ($contacts as $i => $contact) : if ($i == 2) break; ?>
+                                <div class="cta-item fadeIn">
+                                    <p class="cta-item-title"><?php echo $contact['title'] ?></p>
+                                    <a href="tel:<?php echo $contact['phone'] ?>" class="cta-item-link btn-link"><?php echo $contact['phone'] ?></a>
+                                </div>
+                            <?php endforeach; ?>
 
-                            <!-- 1 -->
-                            <div class="cta-item fadeIn">
-                                <p class="cta-item-title">Старший тренер</p>
-                                <a href="tel:+380630987529800" class="cta-item-link btn-link">+38 (063) 0987529800</a>
-                            </div>
-
-                            <!-- 2 -->
-                            <div class="cta-item fadeIn">
-                                <a href="https://t.me/Equicore" class="btn-group">
-                                    <b>телеграм бот</b>
-                                    <div class="btn-icon type-2">
-                                        <!-- <svg width="24" height="24">
-                                            <use xlink:href="img/icons/icons_global.svg#icon-telegram" fill="none"></use>
-                                        </svg> -->
-                                        <svg
-                                                id="icon-telegram"
-                                                width="24"
-                                                height="24"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <g id="Icon/telegram">
-                                                <path
-                                                        id="Vector"
-                                                        d="M21 5L2 12.5L9 13.5M21 5L18.5 20L9 13.5M21 5L9 13.5M9 13.5V19L12.2488 15.7229"
-                                                        stroke="currentColor"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                />
-                                            </g>
-                                        </svg>
-                                    </div>
-                                </a>
-                            </div>
+                            <?php if ($telegram) : ?>
+                                <div class="cta-item fadeIn">
+                                    <?php get_template_part('/src/template-parts/links', 'telegram') ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -92,6 +66,4 @@ $image      = get_field_value($block_fields, 'image')
             </div>
         </div>
     </div>
-
-    <div class="spacer-lg"></div>
 </section>

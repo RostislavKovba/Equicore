@@ -8,9 +8,11 @@
 }
 
 .srv-wrap {
-    > * + * {
-        margin-top: min(var(--sp-sm), 3.125vw);
-    }
+
+}
+
+.srv-item {
+    padding-block: .5rem;
 }
 
 .srv-img-w {
@@ -83,6 +85,8 @@
     .srv-item {
         display: flex;
         gap: 2.5%;
+        padding-block: 1rem;
+        border-top: 1px solid var(--clr-border);
 
         .title {
             @include lines(3);
@@ -116,6 +120,12 @@
 }
 
 @include maxMedia(lg) {
+    .srv-img {
+        max-width: 100%;
+        padding-top: 56.25%;
+    }
+}
+@include maxMedia(md) {
     .srv-img {
         max-width: 100%;
         padding-top: 56.25%;

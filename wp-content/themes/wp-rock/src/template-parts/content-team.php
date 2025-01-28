@@ -1,30 +1,104 @@
 <?php
 $id = $args['id'] ?: get_the_ID();
+$is_reverse = $args['is_reverse'];
 
 $image   = [
     'url' => get_the_post_thumbnail_url($id),
     'id' => get_post_thumbnail_id($id),
 ];
-$name       = get_the_title($id);
-$position   = get_field('position', $id);
+$name        = get_the_title($id);
+$position    = get_field('position', $id);
+$description = get_field('description', $id);
 ?>
 
-<div class="team-item">
-    <div class="team-img">
-        <picture>
-            <source srcset="<?php echo $image['url']; ?>" type="image/jpg" />
+<div class="row g-xxs justify-content-between align-stretch team-item">
 
-            <?php echo wp_get_attachment_image($image['id'], 'full', false, [
-                'class' => 'rellax-img',
-                'data-rellax-speed' => '-2',
-                'fetchpriority' => 'high',
-                'loading' => 'lazy'
-            ]); ?>
-        </picture>
+    <div class="col-sm-4 <?php if ($is_reverse) echo 'order-sm-2' ?> <?php if (!IS_ADMIN) echo ' animate'; ?> slideLeft">
+        <div class="lr-img-3">
+            <picture>
+                <source srcset="<?php echo $image['url']; ?>" type="image/jpg" />
+                <?php echo wp_get_attachment_image($image['id'], 'full', false, [
+                    'class' => 'rellax-img',
+                    'data-rellax-speed' => '-2',
+                    'loading' => 'lazy'
+                ]); ?>
+            </picture>
+
+            <!-- labels -->
+            <div class="lr-3-labels d-flex d-sm-none">
+                <div class="lr-3-name">
+                    <b><?php echo $name ?></b>
+                    <p><?php echo $position ?></p>
+                </div>
+
+                <div class="lr-3-icon icon">
+                    <svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 32 32"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <g id="Icon/click">
+                            <path
+                                    id="Vector"
+                                    d="M10.667 19.4293L8.23655 17.1147C7.38063 16.2995 6.01806 16.3615 5.23971 17.2511C4.53629 18.0549 4.55699 19.2612 5.28759 20.0405L13.2102 28.4913C13.7143 29.0291 14.4173 29.3341 15.1543 29.3341C16.601 29.3341 18.9794 29.3341 21.3337 29.3341C24.5337 29.3341 26.667 26.6675 26.667 24.0008C26.667 24.0008 26.667 14.858 26.667 12.5723"
+                                    stroke="#F5F1ED"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                            />
+                            <path
+                                    id="Vector_2"
+                                    d="M22.667 13.3328C22.667 13.3328 22.667 13.166 22.667 12.5709C22.667 9.52325 26.667 9.52325 26.667 12.5709"
+                                    stroke="#F5F1ED"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                            />
+                            <path
+                                    id="Vector_3"
+                                    d="M18.667 13.3331C18.667 13.3331 18.667 12.2376 18.667 11.0474C18.667 7.99981 22.667 7.99981 22.667 11.0474C22.667 11.345 22.667 12.2737 22.667 12.5712C22.667 13.1663 22.667 13.3331 22.667 13.3331"
+                                    stroke="#F5F1ED"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                            />
+                            <path
+                                    id="Vector_4"
+                                    d="M14.667 13.334C14.667 13.334 14.667 11.4883 14.667 10.0006C14.667 6.95294 18.667 6.95294 18.667 10.0006C18.667 10.0006 18.667 10.7506 18.667 11.0482C18.667 12.2383 18.667 13.334 18.667 13.334"
+                                    stroke="#F5F1ED"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                            />
+                            <path
+                                    id="Vector_5"
+                                    d="M10.667 19.4279V4.66602C10.667 3.56144 11.5624 2.66602 12.667 2.66602C13.7715 2.66602 14.667 3.5601 14.667 4.66467C14.667 6.25226 14.667 8.45476 14.667 9.99935C14.667 11.4871 14.667 13.3327 14.667 13.3327"
+                                    stroke="#F5F1ED"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                            />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="lr-content-3 d-block d-sm-none">
+                <div class="h6 lr-title-3 title text-animate"><?php echo $name ?></div>
+                <div class="lr-text-3 text fadeIn">
+                    <p>
+                        <?php echo $description ?>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="team-item_desc">
-        <div class="h6 title team-name"><?php echo $name ?></div>
-        <div class="text"><?php echo $position ?></div>
+    <div class="col-sm-8 animate slideRight">
+        <div class="lr-content-3 d-none d-sm-block">
+            <div class="h6 lr-title-3 title text-animate"><?php echo $name ?></div>
+            <div class="lr-text-3 text fadeIn">
+                <p>
+                    <?php echo $description ?>
+                </p>
+            </div>
+        </div>
     </div>
 </div>

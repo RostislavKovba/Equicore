@@ -15,10 +15,12 @@ $block_id   = isset($args['metadata']['name']) ? str_replace(' ', '', $args['met
 
 
 $gallery_type   = get_field_value($block_fields, 'gallery_type');
+$gallery_type   = get_field_value($block_fields, 'gallery_type');
 
 $selection_type = get_field_value($block_fields, 'selection_type');
 $posts_per_page = $gallery_type ? -1 : get_field_value($block_fields, 'posts_per_page');
 $gallery        = get_field_value($block_fields, 'gallery');
+$button         = get_field_value($block_fields, 'button');
 
 $args = [
     'post_type'      => 'gallery',
@@ -37,7 +39,7 @@ $query = new WP_Query($args);
     <?php if ($block_id) echo ' id="' . esc_attr($block_id) . '"'; ?>
     <?php if (IS_ADMIN && $disabled) echo 'disabled="disabled"'; ?>
 >
-    <div class="container-fluid px-sm animate" data-animate='{"target": ".slideLeft",  "delay": 200}'>
+    <div class="container-fluid px-sm <?php if (!IS_ADMIN) echo ' animate'; ?>" data-animate='{"target": ".slideLeft",  "delay": 200}'>
         <div class="row mb-sm glr-row">
 
             <?php while ($query->have_posts()) {
@@ -48,7 +50,6 @@ $query = new WP_Query($args);
         </div>
 
         <?php if ($gallery_type) : ?>
-
             <div class="pagination">
                 <ul>
                     <li class="pag-arrow"><a href="#"></a></li>
@@ -60,9 +61,19 @@ $query = new WP_Query($args);
                     <li class="pag-arrow"><a href="#"></a></li>
                 </ul>
             </div>
+        <?php endif; ?>
 
+        <?php if ($button) : ?>
+            <div class="glr-btn text-right">
+                <a href="<?php echo $button['url'] ?>" class="btn-group type-2">
+                    <b><?php echo $button['title'] ?></b>
+                    <div class="btn-icon">
+                        <svg width="24" height="24">
+                            <use xlink:href="<?php echo ASSETS_IMG ?>icons/icons_global.svg#icon-arrow" fill="none"></use>
+                        </svg>
+                    </div>
+                </a>
+            </div>
         <?php endif; ?>
     </div>
-
-    <div class="spacer-lg"></div>
 </section>

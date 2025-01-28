@@ -16,7 +16,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
+            "default_value": "Зв’яжіться з нами",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
@@ -66,5 +66,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1737467992
+    "modified": 1737723794
 }

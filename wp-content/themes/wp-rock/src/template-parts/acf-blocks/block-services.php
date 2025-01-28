@@ -29,7 +29,7 @@ if ($selection_type == 'manual')
 $query = new WP_Query($args);
 ?>
 
-<section class="section section-srv pt-0 <?php  if (!IS_ADMIN) echo 'animate'?> <?php echo esc_html($class_name); ?>"
+<section class="section section-srv <?php  if (!IS_ADMIN) echo 'animate'?> <?php echo esc_html($class_name); ?>"
     <?php if (IS_ADMIN) echo ' visible'; ?>
     <?php if ($block_id) echo ' id="' . esc_attr($block_id) . '"'; ?>
     <?php if (IS_ADMIN && $disabled) echo 'disabled="disabled"'; ?>
@@ -49,5 +49,4 @@ $query = new WP_Query($args);
             </div>
         </div>
     </div>
-    <div class="spacer-lg"></div>
 </section>

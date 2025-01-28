@@ -37,8 +37,6 @@ $query = new WP_Query($args);
     <?php if ($block_id) echo ' id="' . esc_attr($block_id) . '"'; ?>
     <?php if (IS_ADMIN && $disabled) echo 'disabled="disabled"'; ?>
 >
-    <div class="spacer-md"></div>
-
     <div class="container">
         <div class="row g-md justify-content-between">
             <div class="d-none d-md-block col-xl-5">
@@ -70,5 +68,4 @@ $query = new WP_Query($args);
             </div>
         </div>
     </div>
-    <div class="spacer-lg"></div>
 </section>

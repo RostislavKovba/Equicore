@@ -19,19 +19,14 @@ function my_wpeditor_formats_options( $settings ) {
 
     $style_formats = array(
         array(
-            'title' => 'BodyM',
-            'block' => 'p',
-            'classes' => 'bodyM',
+            'title' => 'Title decor',
+            'block' => 'span',
+            'classes' => 'title-decor',
         ),
         array(
-            'title' => 'Body Small',
-            'block' => 'p',
-            'classes' => 'bodySmall',
-        ),
-        array(
-            'title' => 'SubtitleM Bold',
-            'block' => 'p',
-            'classes' => 'subtitleMBold',
+            'title' => 'Custom Link',
+            'block' => 'span',
+            'classes' => 'btn-group slideUp',
         ),
     );
 
@@ -39,4 +34,18 @@ function my_wpeditor_formats_options( $settings ) {
 
     return $settings;
 }
+
+add_filter( 'mce_buttons_2', 'fb_mce_editor_buttons' );
+/**
+ * Add style selector to the beginning of the toolbar
+ *
+ * @param {array} $buttons - Buttons.
+ * @return mixed
+ */
+function fb_mce_editor_buttons( $buttons ) {
+
+    array_unshift( $buttons, 'styleselect' );
+    return $buttons;
+}
+
 
