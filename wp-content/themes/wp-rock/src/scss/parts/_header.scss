@@ -10,7 +10,10 @@
     --h-icon-num: 1.25rem;
 }
 
-header {
+.header {
+    opacity: 1;
+    transition: 0.15s linear opacity;
+    position: relative;
     height: var(--h-height);
     &.no-banner {
         .h-wrap {
@@ -383,9 +386,4 @@ header.scrolled {
     .sub-menu {
         align-items: center;
     }
-}
-
-header {
-    opacity: 1;
-    transition: 0.15s linear opacity;
 }

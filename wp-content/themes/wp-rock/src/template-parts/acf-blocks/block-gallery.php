@@ -13,8 +13,6 @@ if (!IS_ADMIN && $disabled) {
 $class_name = isset($args['className']) ? ' ' . $args['className'] : '';
 $block_id   = isset($args['metadata']['name']) ? str_replace(' ', '', $args['metadata']['name']) : '';
 
-
-$gallery_type   = get_field_value($block_fields, 'gallery_type');
 $gallery_type   = get_field_value($block_fields, 'gallery_type');
 
 $selection_type = get_field_value($block_fields, 'selection_type');

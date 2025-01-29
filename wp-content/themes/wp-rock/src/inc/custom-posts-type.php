@@ -7,11 +7,15 @@ add_action('manage_post_posts_columns', 'add_post_thumbnail_column', 4 );
 add_action('manage_team_posts_columns', 'add_post_thumbnail_column', 4 );
 add_action('manage_service_posts_columns', 'add_post_thumbnail_column', 4 );
 add_action('manage_gallery_posts_columns', 'add_post_thumbnail_column', 4 );
+add_action('manage_event_posts_columns', 'add_post_thumbnail_column', 4 );
+add_action('manage_event_posts_columns', 'add_event_date_column', 4 );
 
 add_action('manage_post_posts_custom_column', 'manage_post_thumbnail_column', 5, 2 );
 add_action('manage_team_posts_custom_column', 'manage_post_thumbnail_column', 5, 2 );
 add_action('manage_service_posts_custom_column', 'manage_post_thumbnail_column', 5, 2 );
 add_action('manage_gallery_posts_custom_column', 'manage_post_thumbnail_column', 5, 2 );
+add_action('manage_event_posts_custom_column', 'manage_post_thumbnail_column', 5, 2 );
+add_action('manage_event_posts_custom_column', 'manage_event_date_column', 5, 2 );
 
 add_action('admin_head', 'admin_custom_column_styles');
 function admin_custom_column_styles() {
@@ -31,5 +35,16 @@ function add_post_thumbnail_column($columns) {
 function manage_post_thumbnail_column($column_key, $post_id) {
     if( $column_key === 'post-thumbnail' ){
         echo wp_get_attachment_image(get_post_thumbnail_id($post_id), 'post-thumbnail', '', ['class' => 'admin-column-thumbnail']);
+    }
+}
+
+function add_event_date_column($columns) {
+    $new_columns['event_date'] = 'Event Date';
+    return array_slice( $columns, 1, 2) + $new_columns + array_slice( $columns, 1 );
+}
+
+function manage_event_date_column($column_key, $post_id) {
+    if( $column_key === 'event_date' ){
+        echo get_field('date', $post_id);
     }
 }

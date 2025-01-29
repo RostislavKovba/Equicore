@@ -69,9 +69,10 @@ const entryPoints = [
 
 const entries = generateEntryPoints(entryPoints);
 
-entries.swiper = `${projectPaths.projectJsPath}/swiper.js`;
 entries.frontend = `${projectPaths.projectJsPath}/frontend.js`;
 entries.backend = `${projectPaths.projectJsPath}/backend.js`;
+entries.swiper = `${projectPaths.projectJsPath}/swiper.js`;
+entries.filter = `${projectPaths.projectJsPath}/filter.js`;
 
 // Files to bundle
 const projectFiles = {

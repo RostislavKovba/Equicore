@@ -9,7 +9,7 @@ global $global_options;
 
 $socials_title = get_field_value($global_options, 'footer_socials_title');
 ?>
-<footer itemscope itemtype="http://schema.org/Organization">
+<footer class="footer" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="<?php bloginfo('name'); ?>" />
 
     <div class="container-fluid px-md">

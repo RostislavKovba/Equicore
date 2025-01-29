@@ -33,6 +33,7 @@ require THEME_DIR . '/src/inc/custom-accept-cookies.php';
 require THEME_DIR . '/src/inc/custom-hooks.php';
 require THEME_DIR . '/src/inc/custom-shortcodes.php';
 require THEME_DIR . '/src/inc/class-mobile-detect.php';
+require THEME_DIR . '/src/inc/filtering.php'; // Post filtering and load more.
 
 function debug($data) {
     echo '<pre class="debug">';

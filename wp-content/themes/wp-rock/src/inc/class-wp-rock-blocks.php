@@ -35,6 +35,7 @@ class WP_Rock_Blocks
         'block-services' => array(),
         'block-faq' => array('title' => 'FAQ'),
         'block-gallery' => array(),
+        'block-events' => array(),
 
         'block-cta' => array('title' => 'Call To Action'),
         'block-contacts' => array(),

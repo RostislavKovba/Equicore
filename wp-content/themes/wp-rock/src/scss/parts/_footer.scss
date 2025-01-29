@@ -7,7 +7,8 @@
     --pd: 2.5rem;
 }
 
-footer {
+.footer {
+    margin-top: auto;
     padding-top: calc(var(--sp-lg) / 2);
     hr {
         border-top: 1px solid var(--clr-border);

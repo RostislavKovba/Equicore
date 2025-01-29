@@ -11,7 +11,7 @@ $header_link = get_field_value($global_options, 'header_link');
 $header_close_title = get_field_value($global_options, 'header_close_title');
 ?>
 
-<header>
+<header class="header">
     <div class="h-wrap">
         <div class="container-fluid">
             <div class="h-inner">
