@@ -53,7 +53,7 @@ add_filter( 'sanitize_file_name', array( $wp_rock, 'custom_sanitize_file_name' )
 /**
  * Set custom upload size limit
  */
-$wp_rock->px_custom_upload_size_limit( 5 );
+$wp_rock->px_custom_upload_size_limit( 512 );
 
 
 /**

@@ -5,4 +5,5 @@
 !/wp-content/themes/
 /wp-content/themes/*
 !/wp-content/themes/wp-rock/
+!/wp-content/plugins/
 !.gitignore
