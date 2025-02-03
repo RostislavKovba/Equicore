@@ -80,14 +80,14 @@ $query = new WP_Query($args);
                             <?php while ($query->have_posts()) {
                                 $query->the_post();
                                 echo '<div class="swiper-slide">';
-                                get_template_part('src/template-parts/content', 'team-slide', ['id' => get_the_ID(), 'type' => $gallery_type]);
+                                get_template_part('src/template-parts/content', 'team-slide', ['id' => get_the_ID()]);
                                 echo '</div>';
                             } ?>
 
                         </div>
                     </div>
 
-                    <div class="swiper-controls-wrap">
+                    <div class="swiper-controls-wrap animate fadeIn">
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-pagination swiper-pagination-relative"></div>
                         <div class="swiper-button-next"></div>

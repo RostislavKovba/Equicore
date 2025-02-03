@@ -40,6 +40,7 @@ $query = new WP_Query($args);
     <div class="container">
         <div class="row justify-content-center">
             <form class="col-xl-12 js-filters-form">
+                <input type="hidden" name="filter_active" value="true">
                 <input type="hidden" name="paged" id="paged" value="1">
                 <input type="hidden" name="auto_submit" value="true">
                 <input type="hidden" name="post_type" value="<?php echo $post_type; ?>">
@@ -89,7 +90,7 @@ $query = new WP_Query($args);
                 <div class="blog-wrap js-posts-list">
                     <?php while ($query->have_posts()) {
                         $query->the_post();
-                        get_template_part('src/template-parts/content', 'event', ['id' => get_the_ID()]);
+                        get_template_part('src/template-parts/content', $post_type, ['id' => get_the_ID()]);
                     } ?>
                 </div>
 

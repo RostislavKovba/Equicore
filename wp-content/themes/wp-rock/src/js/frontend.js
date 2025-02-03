@@ -40,7 +40,8 @@ jQuery(function ($) {
         navigator.userAgent.match(/iPod/i)),
         (isAndroid = navigator.userAgent.match(/Android/i)),
         (isChrome =
-            navigator.userAgent.indexOf('Chrome') >= 0 && navigator.userAgent.indexOf('Edge') < 0),
+            navigator.userAgent.indexOf('Chrome') >= 0 &&
+            navigator.userAgent.indexOf('Edge') < 0),
         (isIPhone = navigator.userAgent.match(/iPhone/i)),
         (isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0);
 
@@ -119,31 +120,37 @@ jQuery(function ($) {
 
                 _functions.resizeCall();
             },
-            false,
+            false
         );
     }
 
     //*==============
     //*  ANIMATION  =
     //*==============
-    document.querySelectorAll('.section').forEach(section => {
+    document.querySelectorAll('.section').forEach((section) => {
         section.style.opacity = 1;
     });
     // elements
     const animateObserver = new IntersectionObserver(
-        entries => {
+        (entries) => {
             for (const entry of entries)
-                if (entry.isIntersecting && !entry.target.classList.contains('animated'))
+                if (
+                    entry.isIntersecting &&
+                    !entry.target.classList.contains('animated')
+                )
                     if (entry.target.getAttribute('data-animate')) {
-                        const paramsS = entry.target.getAttribute('data-animate');
+                        const paramsS =
+                            entry.target.getAttribute('data-animate');
                         const params = JSON.parse(paramsS);
                         if (params.target) {
                             entry.target.classList.add('animated');
-                            entry.target.querySelectorAll(params.target)?.forEach((el, i) => {
-                                setTimeout(() => {
-                                    el.classList.add('animated');
-                                }, (params.delay || 0) * i + (params.startDelay || 0));
-                            });
+                            entry.target
+                                .querySelectorAll(params.target)
+                                ?.forEach((el, i) => {
+                                    setTimeout(() => {
+                                        el.classList.add('animated');
+                                    }, (params.delay || 0) * i + (params.startDelay || 0));
+                                });
                         } else {
                             setTimeout(() => {
                                 entry.target.classList.add('animated');
@@ -156,9 +163,9 @@ jQuery(function ($) {
         {
             root: document,
             rootMargin: '-40px',
-        },
+        }
     );
-    document.querySelectorAll('.animate')?.forEach(element => {
+    document.querySelectorAll('.animate')?.forEach((element) => {
         animateObserver.observe(element);
     });
 
@@ -167,7 +174,7 @@ jQuery(function ($) {
     //*==============
     const observerFunction = new IntersectionObserver(
         function (entries, observer) {
-            entries.forEach(entry => {
+            entries.forEach((entry) => {
                 if (!entry.isIntersecting) return;
 
                 entry.target.classList.add('|', 'animated');
@@ -178,10 +185,10 @@ jQuery(function ($) {
             root: null,
             threshold: 0,
             rootMargin: window.innerWidth > 767 ? '-8%' : '-5%',
-        },
+        }
     );
 
-    document.querySelectorAll('.section').forEach(block => {
+    document.querySelectorAll('.section').forEach((block) => {
         observerFunction.observe(block);
     });
 
@@ -197,10 +204,14 @@ jQuery(function ($) {
     });
 
     /* Close menu */
-    $(document).on('click', '.h-menu-overlay, .h-menu > .btn-close', function () {
-        $('html').removeClass('overflow-menu');
-        $('header').removeClass('open-menu');
-    });
+    $(document).on(
+        'click',
+        '.h-menu-overlay, .h-menu > .btn-close',
+        function () {
+            $('html').removeClass('overflow-menu');
+            $('header').removeClass('open-menu');
+        }
+    );
 
     //*===========
     //*  POPUPS  =
@@ -245,21 +256,29 @@ jQuery(function ($) {
     };
 
     // Close  popup
-    $(document).on('click', '.popup-content .close-popup, .popup-content .layer-close', function (e) {
-        e.preventDefault();
-        _functions.closePopup();
-    });
+    $(document).on(
+        'click',
+        '.popup-content .close-popup, .popup-content .layer-close',
+        function (e) {
+            e.preventDefault();
+            _functions.closePopup();
+        }
+    );
 
     // Ajax popup
     $(document).on('click', '.open-popup', function (e) {
         const popupWrapper = document.getElementById('popups');
 
         if (e.target.closest('.open-popup')) {
-            let dataRel = e.target.closest('.open-popup').getAttribute('data-rel');
+            let dataRel = e.target
+                .closest('.open-popup')
+                .getAttribute('data-rel');
             e.preventDefault();
 
             if (popupWrapper.hasChildNodes()) {
-                _functions.openPopup('.popup-content[data-rel="' + dataRel + '"]');
+                _functions.openPopup(
+                    '.popup-content[data-rel="' + dataRel + '"]'
+                );
             } else {
                 const ajaxPopup = new XMLHttpRequest();
 
@@ -270,7 +289,9 @@ jQuery(function ($) {
                         setTimeout(function () {
                             _functions.initSelect('.popup-wrapper');
                             _functions.initMask();
-                            _functions.openPopup('.popup-content[data-rel="' + dataRel + '"]');
+                            _functions.openPopup(
+                                '.popup-content[data-rel="' + dataRel + '"]'
+                            );
                         }, 50);
                     }
                 };
@@ -311,8 +332,7 @@ jQuery(function ($) {
         let i = $(this).index();
 
         $(this).addClass('is-active').siblings().removeClass('is-active');
-        tab
-            .eq(i)
+        tab.eq(i)
             .siblings('.tab:visible')
             .stop()
             .finish()
@@ -354,7 +374,7 @@ jQuery(function ($) {
     };
 
     const videoObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
 
             _functions.videoLoad(entry.target);
@@ -362,7 +382,7 @@ jQuery(function ($) {
         });
     }, options);
 
-    document.querySelectorAll('.video').forEach(element => {
+    document.querySelectorAll('.video').forEach((element) => {
         videoObserver.observe(element);
     });
 
@@ -407,7 +427,12 @@ jQuery(function ($) {
                 if (this.nodeType == 3) {
                     let $this = $(this);
                     $this.replaceWith(
-                        $this.text().replace(/[^\s]+/g, "<span class='text-animate-word'><span>$&</span></span>"),
+                        $this
+                            .text()
+                            .replace(
+                                /[^\s]+/g,
+                                "<span class='text-animate-word'><span>$&</span></span>"
+                            )
                     );
                 }
             });
@@ -418,11 +443,15 @@ jQuery(function ($) {
         rootMargin: '0px',
     };
 
-    const textAnimateObserver = new IntersectionObserver(entries => {
+    const textAnimateObserver = new IntersectionObserver((entries) => {
         for (const entry of entries)
-            if (entry.isIntersecting && !entry.target.classList.contains('text-animated')) {
+            if (
+                entry.isIntersecting &&
+                !entry.target.classList.contains('text-animated')
+            ) {
                 entry.target.classList.add('text-animated');
-                const letters = entry.target.querySelectorAll('.text-animate-word');
+                const letters =
+                    entry.target.querySelectorAll('.text-animate-word');
                 const delay = 300 / letters.length;
                 letters.forEach(function (letter, i) {
                     setTimeout(() => {
@@ -433,9 +462,8 @@ jQuery(function ($) {
     }, options2);
 
     setTimeout(() => {
-        document.querySelectorAll('.text-animate')?.forEach(element => {
+        document.querySelectorAll('.text-animate')?.forEach((element) => {
             textAnimateObserver.observe(element);
         });
     }, 1000);
-
 });

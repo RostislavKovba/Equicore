@@ -1,6 +1,6 @@
 {
     "key": "group_678e31796ee36",
-    "title": "Block - Gallery",
+    "title": "Block - Galleries",
     "fields": [
         {
             "key": "field_678e35a4af211",
@@ -83,15 +83,7 @@
             "type": "number",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_678e35a4af211",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -111,7 +103,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/block-gallery"
+                "value": "acf\/block-galleries"
             }
         ]
     ],
@@ -124,5 +116,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1738069451
+    "modified": 1738584902
 }

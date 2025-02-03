@@ -28,12 +28,23 @@ $image      = get_field_value($block_fields, 'image')
     <div class="container animate" data-animate='{"target": ".slideUp",  "delay": 400}'>
         <div class="row g-md justify-content-between">
 
-            <div class="col-md-7 align-self-center <?php if ($is_revert) echo 'order-md-2' ?>">
+            <div class="col-md-5 <?php if ($is_revert) echo 'order-md-2' ?>">
+                <div class="lr-img-1 animate <?php echo $is_revert ? 'slideLeft' : 'slideRight' ?>" >
+                    <picture>
+                        <source srcset="<?php echo $image['url']; ?>" type="image/jpg" />
+                        <?php echo wp_get_attachment_image($image['id'], 'full', false, [
+                            'class' => 'rellax-img',
+                            'data-rellax-speed' => '-2',
+                            'loading' => 'lazy'
+                        ]); ?>
+                    </picture>
+                </div>
+            </div>
+
+            <div class="col-md-7 align-self-center">
                 <div class="lr-content-1">
                     <div class="text slideUp">
-                        <p>
-                            <?php echo $text; ?>
-                        </p>
+                        <?php echo $text; ?>
                     </div>
 
                     <?php if ($button) : ?>
@@ -49,18 +60,6 @@ $image      = get_field_value($block_fields, 'image')
                 </div>
             </div>
 
-            <div class="col-md-5">
-                <div class="lr-img-1">
-                    <picture>
-                        <source srcset="<?php echo $image['url']; ?>" type="image/jpg" />
-                        <?php echo wp_get_attachment_image($image['id'], 'full', false, [
-                            'class' => 'rellax-img',
-                            'data-rellax-speed' => '-2',
-                            'loading' => 'lazy'
-                        ]); ?>
-                    </picture>
-                </div>
-            </div>
         </div>
     </div>
 </section>

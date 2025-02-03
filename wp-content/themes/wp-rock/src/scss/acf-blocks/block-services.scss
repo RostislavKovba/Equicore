@@ -4,15 +4,13 @@
 /*  srv              */
 /*--------------------*/
 .section-srv {
-
 }
 
 .srv-wrap {
-
 }
 
 .srv-item {
-    padding-block: .5rem;
+    padding-block: 0.5rem;
 }
 
 .srv-img-w {
@@ -85,7 +83,7 @@
     .srv-item {
         display: flex;
         gap: 2.5%;
-        padding-block: 1rem;
+        padding-block: 1.25rem;
         border-top: 1px solid var(--clr-border);
 
         .title {

@@ -91,14 +91,6 @@ class Filter
             ];
         }
 
-//        $args['tax_query']['relation'] = 'AND';
-//        $args['tax_query'][] = [
-//            'taxonomy'  => 'product_visibility',
-//            'terms'     => ['exclude-from-catalog'],
-//            'field'     => 'name',
-//            'operator'  => 'NOT IN',
-//        ];
-
         return $args;
     }
 
@@ -108,7 +100,9 @@ class Filter
     public function filtering() {
         ob_start();
         $args = $this->get_filter_args();
-        $content_type = filter_input( INPUT_POST, 'content_type', FILTER_SANITIZE_STRING ) ?: $args['post_type'];
+        $content_type = filter_input( INPUT_POST, 'content_type' ) ?: $args['post_type'];
+        $content_args_json = filter_input( INPUT_POST, 'content_args' );
+        $content_args = $content_args_json ? json_decode($content_args_json, true) : [];
 
 //        debug($args);
 
@@ -117,7 +111,8 @@ class Filter
         if ( have_posts() ) {
             while ( have_posts() ) {
                 the_post();
-                get_template_part('src/template-parts/content', $content_type, ['id' => get_the_ID()]);
+                $content_args['id'] = get_the_ID();
+                get_template_part('src/template-parts/content', $content_type, $content_args);
             }
         }
 
@@ -139,7 +134,6 @@ class Filter
 
         $found_posts    = $wp_query->found_posts;
         $showing_posts  = $args['posts_per_page'] * $args['paged'];
-        $next_page      = $args['paged']++;
 
         if ( $found_posts > $showing_posts ) :
             get_template_part('/src/template-parts/load-more-btn');

@@ -74,6 +74,8 @@ text-animate {
 		top: -10% !important;
 	}
 }
+
+.h-links li,
 .slideUp {
 	transform: translateY(50px);
 	opacity: 0;
@@ -109,6 +111,7 @@ text-animate {
 	}
 }
 
+.h-links li.animated,
 .animated.slideRight,
 .animated.slideLeft,
 .animated.slideLeft-2,

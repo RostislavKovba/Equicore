@@ -11,7 +11,7 @@ $header_link = get_field_value($global_options, 'header_link');
 $header_close_title = get_field_value($global_options, 'header_close_title');
 ?>
 
-<header class="header">
+<header>
     <div class="h-wrap">
         <div class="container-fluid">
             <div class="h-inner">
@@ -23,7 +23,7 @@ $header_close_title = get_field_value($global_options, 'header_close_title');
                     <div class="btn-close type-2">
                         <span><?php echo $header_close_title; ?></span>
                     </div>
-                    <div class="container animate" data-animate='{"target": ".slideUp",  "delay": 250}'>
+                    <div class="container animate" data-animate='{"target": ".menu-item",  "delay": 250}'>
 
                         <?php wp_nav_menu(
                             array(

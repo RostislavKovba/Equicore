@@ -19,6 +19,7 @@ var Filter = /*#__PURE__*/function () {
   function Filter(block) {
     _classCallCheck(this, Filter);
     this.form = block.querySelector('.js-filters-form');
+    this.filterActive = this.form.querySelector("input[name='filter_active']");
     this.autoSubmit = this.form.querySelector("input[name='auto_submit']");
     this.pagedInput = this.form.querySelector("input[name='paged']");
     this.taxonomiesInputs = this.form.querySelectorAll("input[name='taxonomies[]']");
@@ -32,11 +33,13 @@ var Filter = /*#__PURE__*/function () {
     this.filterSidebar = block.querySelector('.js-filter');
     this.openFilterBtn = block.querySelector('.js-filter-open');
     this.closeFilterBtn = block.querySelector('.js-filter-close');
+    this.initFilter();
   }
   return _createClass(Filter, [{
     key: "initFilter",
     value: function initFilter() {
       var _this = this;
+      if (!this.filterActive.value) return;
       console.log('filter init');
       this.showFilteredPosts();
       this.toggleFilterAllBtn();
@@ -333,11 +336,18 @@ var Filter = /*#__PURE__*/function () {
     }
   }]);
 }();
-var block = document.querySelector('.block-events');
-if (block) {
-  var filter = new Filter(block);
-  filter.initFilter();
-}
+var blocks = ['.block-events', '.block-galleries'];
+blocks.map(function (blockClass) {
+  var block = document.querySelector(blockClass);
+  if (!block) return;
+  new Filter(block);
+});
+
+// const block = document.querySelector('.block-events');
+// const block = document.querySelector('.gallery-section');
+// if (block) {
+//     const filter = new Filter(block);
+// }
 /******/ })()
 ;
 //# sourceMappingURL=filter.js.map

@@ -3,8 +3,8 @@
 $page = (int) $args['page'];
 ?>
 
-<div class="load-more__btn">
-    <span class="btn-link">
+<div class="load-more__btn btn btn-primary">
+    <b>
         <?php pll_e('Load More'); ?>
-    </span>
+    </b>
 </div>

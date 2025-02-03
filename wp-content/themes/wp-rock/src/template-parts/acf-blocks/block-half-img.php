@@ -1,6 +1,6 @@
 <?php
 /**
- * Block - Side Image.
+ * Block - Half Image.
  */
 
 $block_fields = get_fields();
@@ -21,7 +21,7 @@ $image      = get_field_value($block_fields, 'image');
 
 ?>
 
-<section class="section lr-02 bg-section py-0 <?php if (!IS_ADMIN) echo 'animate'; ?>"
+<section class="section lr-02 bg-section py-0"
     <?php if (IS_ADMIN) echo ' visible'; ?>
     <?php if ($block_id) echo ' id="' . esc_attr($block_id) . '"'; ?>
     <?php if (IS_ADMIN && $disabled) echo 'disabled="disabled"'; ?>

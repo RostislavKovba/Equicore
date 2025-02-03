@@ -9,7 +9,7 @@
 
 .footer {
     margin-top: auto;
-    padding-top: calc(var(--sp-lg) / 2);
+
     hr {
         border-top: 1px solid var(--clr-border);
         margin-inline: calc(-1 * var(--sp-md));
@@ -197,6 +197,9 @@
 }
 
 @include minMedia(xl) {
+    .footer {
+        padding-top: calc(var(--sp-lg) / 2);
+    }
     .footer-cnt-item:hover,
     .footer-links a:hover {
         color: var(--clr-primary);
@@ -234,8 +237,8 @@
         }
     }
     .footer-logo {
-        max-width: 10rem;
-        margin-inline: auto;
+        max-width: 6.25rem;
+        margin-left: -0.425rem;
     }
 
     .footer-contacts {

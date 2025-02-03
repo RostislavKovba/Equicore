@@ -1,4 +1,4 @@
-@import "../parts/mixin";
+@import '../parts/mixin';
 
 /*--------------------*/
 /*  Team              */
@@ -97,6 +97,14 @@
             &::before {
                 background-color: rgba(0, 0, 0, 0);
             }
+        }
+    }
+}
+
+@include maxMedia(lg) {
+    .team-slider {
+        .swiper-pagination.swiper-pagination-relative {
+            margin-top: 0;
         }
     }
 }

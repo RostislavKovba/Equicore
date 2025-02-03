@@ -101,7 +101,7 @@ function set_post_type_default_blocks() {
     // inspiration
     $center_object = get_post_type_object( 'gallery' );
     $center_object->template = array(
-//        array( 'acf/block-banner' ),
+        array( 'acf/block-gallery' ),
     );
 
     // page

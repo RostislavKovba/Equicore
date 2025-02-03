@@ -13,65 +13,63 @@ if (!IS_ADMIN && $disabled) {
 $class_name = isset($args['className']) ? ' ' . $args['className'] : '';
 $block_id   = isset($args['metadata']['name']) ? str_replace(' ', '', $args['metadata']['name']) : '';
 
-$gallery_type   = get_field_value($block_fields, 'gallery_type');
+$suptitle    = 'Галерея';
+$title       = get_the_title();
+$gallery     = get_field('gallery', get_the_id());
 
-$selection_type = get_field_value($block_fields, 'selection_type');
-$posts_per_page = $gallery_type ? -1 : get_field_value($block_fields, 'posts_per_page');
-$gallery        = get_field_value($block_fields, 'gallery');
-$button         = get_field_value($block_fields, 'button');
-
-$args = [
-    'post_type'      => 'gallery',
-    'posts_per_page' => $posts_per_page,
-    'post_status'    => 'publish',
-    'order'          => 'DESC',
-];
-if ($selection_type == 'manual')
-    $args['post__in'] = $gallery;
-
-$query = new WP_Query($args);
+$col_template = [
+    3,5,4,
+    5,3,4,
+    3,4,5,
+    4,5,3,
+]
 ?>
 
-<section class="section gallery-section <?php if (!IS_ADMIN) echo ' animate'; ?> <?php echo esc_html($class_name); ?>"
+<section class="section gallery-section block-gallery <?php if (!IS_ADMIN) echo 'animate'; ?> <?php echo esc_html($class_name); ?>"
     <?php if (IS_ADMIN) echo ' visible'; ?>
     <?php if ($block_id) echo ' id="' . esc_attr($block_id) . '"'; ?>
     <?php if (IS_ADMIN && $disabled) echo 'disabled="disabled"'; ?>
 >
-    <div class="container-fluid px-sm <?php if (!IS_ADMIN) echo ' animate'; ?>" data-animate='{"target": ".slideLeft",  "delay": 200}'>
-        <div class="row mb-sm glr-row">
+    <div class="d-none d-sm-block spacer-lg"></div>
+    <div class="d-block d-sm-none spacer-md"></div>
 
-            <?php while ($query->have_posts()) {
-                $query->the_post();
-                get_template_part('src/template-parts/content', 'gallery', ['id' => get_the_ID(), 'type' => $gallery_type]);
-            } ?>
+    <div class="container-fluid px-sm <?php if (!IS_ADMIN) echo 'animate'; ?>" data-animate='{"target": ".slideUp",  "delay": 200}'>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="title-block text-center mb-md">
+                    <div class="text text-pretty slideUp">
+                        <?php echo $suptitle; ?>
+                    </div>
+
+                    <h1 class="h2-lg title type-2 slideUp">
+                        <i></i>
+                        <?php echo $title; ?>
+                    </h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-sm glr-row block-gallery__row slideUp glr-item">
+
+            <?php foreach ($gallery as $i => $image) :
+                // Repeat template
+                if ((count($col_template) < count($gallery)) && count($col_template) <= $i ) $i -= count($col_template) * (int)($i / count($col_template));
+
+                $col_num = $col_template[$i];
+                ?>
+                <div class="block-gallery__image lightbox-gallery col-md-<?php echo $col_num ?>">
+                    <div class="lightbox-img" data-src="<?php echo $image['url'] ?>">
+                        <?php echo wp_get_attachment_image($image['id'], 'full', false, [
+//                            'class' => 'rellax-img',
+//                            'data-rellax-speed' => '-1.5',
+                        ]); ?>
+                    </div>
+                </div>
+
+            <?php endforeach; ?>
 
         </div>
 
-        <?php if ($gallery_type) : ?>
-            <div class="pagination">
-                <ul>
-                    <li class="pag-arrow"><a href="#"></a></li>
-                    <ul class="pag-links">
-                        <li><a href="#">1</a></li>
-                        <li class="active"><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                    </ul>
-                    <li class="pag-arrow"><a href="#"></a></li>
-                </ul>
-            </div>
-        <?php endif; ?>
-
-        <?php if ($button) : ?>
-            <div class="glr-btn text-right">
-                <a href="<?php echo $button['url'] ?>" class="btn-group type-2">
-                    <b><?php echo $button['title'] ?></b>
-                    <div class="btn-icon">
-                        <svg width="24" height="24">
-                            <use xlink:href="<?php echo ASSETS_IMG ?>icons/icons_global.svg#icon-arrow" fill="none"></use>
-                        </svg>
-                    </div>
-                </a>
-            </div>
-        <?php endif; ?>
     </div>
 </section>

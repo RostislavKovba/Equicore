@@ -30,8 +30,8 @@ $telegram    = get_field_value($global_options, 'telegram');
     <div class="container-fluid px-sm">
         <div class="qst-section">
             <div class="row g-xs justify-content-center">
-                <div class="col-md-8">
-                    <div class="cta-content <?php if (!IS_ADMIN) echo 'animate'; ?>" data-animate='{"target": ".fadeIn",  "delay": 200}'>
+                <div class="col-md-8 animate slideRight">
+                    <div class="cta-content <?php if (!IS_ADMIN) echo 'animate'; ?>" data-animate='{"target": ".fadeIn",  "delay": 300}'>
                         <div class="h3 title mb-md text-left text-animate">
                             <?php echo $title ?>
                         </div>
@@ -53,7 +53,7 @@ $telegram    = get_field_value($global_options, 'telegram');
                     </div>
                 </div>
 
-                <div style="overflow: hidden" class="col-md-4">
+                <div style="overflow: hidden" class="col-md-4 animate slideLeft">
                     <div class="image-cover cta-img">
                         <picture>
                             <source srcset="<?php echo $image['url']; ?>" type="image/jpg" />

@@ -42,7 +42,7 @@
 :has(#wpadminbar) {
     .h-wrap {
         top: 32px;
-        @media screen and ( max-width: 782px ) {
+        @media screen and (max-width: 782px) {
             top: 46px;
         }
     }
@@ -247,7 +247,7 @@ header.scrolled {
                 top: 0.5rem;
                 width: var(--iconSz);
                 height: var(--iconSz);
-                //background-image: url('../img/icons/link-decor.svg');
+                background-image: url('../img/icons/link-decor.svg');
                 background-size: contain;
                 background-position: center;
                 transition: var(--transition-1);

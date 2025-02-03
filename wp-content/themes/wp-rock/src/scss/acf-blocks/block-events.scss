@@ -1,6 +1,5 @@
 @import '../parts/mixin';
 
-
 .blog-wrap {
     > * + * {
         margin-top: max(1.5rem, 2.725vw);
@@ -32,6 +31,12 @@
 
     > * + * {
         margin-top: 3%;
+    }
+    :is(.text) {
+        margin-top: 1%;
+    }
+    :is(.blog-labels) {
+        margin-top: 2%;
     }
 }
 
@@ -97,7 +102,6 @@
         margin-top: 4%;
     }
 }
-
 
 .sub-links {
     --space: 1rem;

@@ -21,7 +21,8 @@ $args = [
     'post_type'      => 'service',
     'posts_per_page' => $posts_per_page,
     'post_status'    => 'publish',
-    'order'          => 'DESC',
+    'order'          => 'ASC',
+    'orderby'        => 'menu_order',
 ];
 if ($selection_type == 'manual')
     $args['post__in'] = $services;
@@ -38,7 +39,7 @@ $query = new WP_Query($args);
         <div class="row justify-content-center">
             <div class="col-12">
                 <!-- srv wrap -->
-                <div class="srv-wrap">
+                <div class="srv-wrap <?php  if (!IS_ADMIN) echo 'animate'?>" data-animate='{"target": ".slideLeft",  "delay": 300}'>
 
                     <?php while ($query->have_posts()) {
                         $query->the_post();

@@ -40,7 +40,7 @@ $query = new WP_Query($args);
     <div class="container">
         <div class="row g-md justify-content-between">
             <div class="d-none d-md-block col-xl-5">
-                <div class="faq-img image-cover">
+                <div class="faq-img animate slideRight image-cover">
                     <picture>
                         <source srcset="<?php echo $image['url']; ?>" type="image/jpg"/>
                         <?php echo wp_get_attachment_image($image['id'], 'full', false, [

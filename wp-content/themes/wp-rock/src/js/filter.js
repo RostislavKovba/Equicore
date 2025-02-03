@@ -7,6 +7,7 @@ class Filter {
     constructor(block) {
         this.form = block.querySelector('.js-filters-form');
 
+        this.filterActive = this.form.querySelector("input[name='filter_active']");
         this.autoSubmit = this.form.querySelector("input[name='auto_submit']");
         this.pagedInput = this.form.querySelector("input[name='paged']");
         this.taxonomiesInputs = this.form.querySelectorAll(
@@ -25,9 +26,12 @@ class Filter {
         this.filterSidebar = block.querySelector('.js-filter');
         this.openFilterBtn = block.querySelector('.js-filter-open');
         this.closeFilterBtn = block.querySelector('.js-filter-close');
+
+        this.initFilter();
     }
 
     initFilter() {
+        if (!this.filterActive.value) return;
         console.log('filter init')
         this.showFilteredPosts();
         this.toggleFilterAllBtn();
@@ -242,10 +246,19 @@ class Filter {
     }
 }
 
-const block = document.querySelector('.block-events');
-if (block) {
-    const filter = new Filter(block);
-    filter.initFilter();
-}
+const blocks = ['.block-events', '.block-galleries' ];
+blocks.map(
+    (blockClass) => {
+        const block = document.querySelector(blockClass);
+        if (!block) return;
+        new Filter(block);
+    }
+);
+
+// const block = document.querySelector('.block-events');
+// const block = document.querySelector('.gallery-section');
+// if (block) {
+//     const filter = new Filter(block);
+// }
 
 

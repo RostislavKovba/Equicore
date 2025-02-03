@@ -11,7 +11,6 @@
  */
 class WP_Rock_Blocks
 {
-
     /**
      * Array with blocks defining.
      *
@@ -19,7 +18,8 @@ class WP_Rock_Blocks
      */
     public array $blocks = array(
         'block-banner' => array(
-            'multiple' => false
+            'multiple' => false,
+//            'post_types' => ['post', 'page', 'service' ]
         ),
 
         'block-text-content' => array(),
@@ -34,7 +34,11 @@ class WP_Rock_Blocks
 
         'block-services' => array(),
         'block-faq' => array('title' => 'FAQ'),
-        'block-gallery' => array(),
+        'block-gallery' => array(
+            'multiple' => false,
+            'post_types' => ['gallery']
+        ),
+        'block-galleries' => array(),
         'block-events' => array(),
 
         'block-cta' => array('title' => 'Call To Action'),
@@ -133,7 +137,7 @@ class WP_Rock_Blocks
                     'render_template' => 'src/template-parts/acf-blocks/' . $id . '.php',
                     'render_callback' => 'block_render',
                     'category' => 'wp-rock',
-                    'post_types' => array_key_exists('post_types', $block) ? $block['post_types'] : array('page'),
+                    'post_types' => array_key_exists('post_types', $block) ? $block['post_types'] : array('post', 'page', 'service'),
                     'mode' => array_key_exists('mode', $block) ? $block['mode'] : 'preview',
                     'supports' => array(
 						'align' => true,
@@ -166,15 +170,15 @@ class WP_Rock_Blocks
                     $args['enqueue_assets'] = $block['enqueue_assets'];
                 }
 
-//                $style_file = ASSETS_CSS . $id . '.css';
-//                if (file_exists($style_file) && file_get_contents($style_file)) {
-//                    $args['enqueue_style'] = ASSETS_CSS . $id . '.css';
-//                }
-//
-//                $script_file = ASSETS_JS . 'js-' . $id . '.js';
-//                if (file_exists($script_file) && file_get_contents($script_file)) {
-//                    $args['enqueue_script'] = ASSETS_JS . 'js-' . $id . '.js';
-//                }
+                $style_file = THEME_DIR . '/assets/public/css/' . $id . '.css';
+                if (file_exists($style_file) && file_get_contents($style_file)) {
+                    $args['enqueue_style'] = ASSETS_CSS . $id . '.css';
+                }
+
+                $script_file = THEME_DIR . '/assets/public/js/js-' . $id . '.js';
+                if (file_exists($script_file) && file_get_contents($script_file)) {
+                    $args['enqueue_script'] = ASSETS_JS . 'js-' . $id . '.js';
+                }
 
                 acf_register_block_type($args);
             }

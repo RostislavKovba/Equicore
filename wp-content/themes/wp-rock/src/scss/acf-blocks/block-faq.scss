@@ -1,12 +1,11 @@
 @import '../parts/mixin';
 
 .faq-section {
-
 }
 
 @include minMedia(xl) {
     .faq-img {
-        padding-top: 90%;
+        padding-top: 118%;
         border-radius: var(--rd-2);
         margin-right: clamp(1rem, -0.3295rem + 3.6994vw, 3rem); // 48 -16
         &::before {

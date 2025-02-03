@@ -24,7 +24,7 @@ $position   = get_field('position', $id);
     </div>
 
     <div class="team-item_desc">
-        <div class="h6 title team-name"><?php echo $name ?></div>
+        <div class="h6 title animate text-animate team-name"><?php echo $name ?></div>
         <div class="text"><?php echo $position ?></div>
     </div>
 </div>

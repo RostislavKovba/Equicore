@@ -15,7 +15,7 @@ $categories = get_the_category($id);
 
 ?>
 
-<div class="col-lg-4 slideLeft <?php echo $class; ?>">
+<div class="col-lg-4 <?php echo $class; ?>">
     <div class="glr-item">
         <!-- ".lightbox-img [data-src]" for true img in gallery -->
         <!-- "img [src]" for thumbs in gallery -->

@@ -59,8 +59,7 @@
 
     --svh: 100svh;
 
-    --box-shadow: 0px 0.25rem 0.625rem 0px rgba(0, 0, 0, 0.05),
-    0px 2.125rem 1.25rem 0px rgba(0, 0, 0, 0.03);
+    --box-shadow: 0px 0.25rem 0.625rem 0px rgba(0, 0, 0, 0.05), 0px 2.125rem 1.25rem 0px rgba(0, 0, 0, 0.03);
 
     --transition-1: 0.3s ease;
     --transition-2: 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -118,7 +117,7 @@ main {
 
     &.animated {
         opacity: 1;
-        transition: .15s linear opacity;
+        transition: 0.15s linear opacity;
     }
 }
 
@@ -222,15 +221,15 @@ main {
         border-color: var(--clr-primary) transparent transparent transparent;
 
         &:nth-child(1) {
-            animation-delay : -0.45s;
+            animation-delay: -0.45s;
         }
 
         &:nth-child(2) {
-            animation-delay : -0.3s;
+            animation-delay: -0.3s;
         }
 
         &:nth-child(3) {
-            animation-delay : -0.15s;
+            animation-delay: -0.15s;
         }
     }
 }
@@ -279,5 +278,12 @@ main {
 @include minMedia(2600) {
     html {
         font-size: 1.75rem;
+    }
+}
+
+@include maxMedia(lg) {
+    #cursor,
+    #aura {
+        display: none;
     }
 }
