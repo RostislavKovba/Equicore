@@ -18,7 +18,6 @@
 		}
 		& > .title {
 			grid-column: span 2;
-			text-align: center;
 		}
 		@include maxMedia(lg) {
 			row-gap: var(--gap);
@@ -29,6 +28,7 @@
 		@include maxMedia(sm) {
 			& > .title {
 				margin-top: var(--sp-md);
+				text-align: center;
 			}
 		}
 	}

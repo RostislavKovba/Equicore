@@ -46,7 +46,7 @@
                 "post_type",
                 "taxonomy"
             ],
-            "return_format": "object",
+            "return_format": "id",
             "min": "",
             "max": "",
             "elements": ""
@@ -116,5 +116,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1738584902
+    "modified": 1738673832
 }

@@ -166,6 +166,7 @@ main {
 }
 
 .custom-checkbox {
+    display: inline-block;
     label {
         display: inline-block;
         font-size: rem(14);
@@ -179,6 +180,7 @@ main {
         padding: rem(8) rem(16);
         text-transform: uppercase;
         cursor: pointer;
+        background-color: var(--bg-1);
 
         &:hover {
             border-color: var(--bg-1);
@@ -192,8 +194,8 @@ main {
         height: 0;
         width: 0;
         &:checked ~ label {
-            color: var(--clr-title);
-            background-color: var(--bg-1);
+            color: var(--clr-white);
+            background-color: var(--clr-primary);
         }
     }
 }

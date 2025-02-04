@@ -16,7 +16,6 @@ $block_id   = isset($args['metadata']['name']) ? str_replace(' ', '', $args['met
 $title = get_field_value($block_fields, 'title');
 $image = get_field_value($block_fields, 'img');
 
-$selection_type   = get_field_value($block_fields, 'selection_type');
 $posts_per_page   = get_field_value($block_fields, 'posts_per_page') ?: 4;
 $faqs             = get_field_value($block_fields, 'faqs');
 
@@ -26,7 +25,7 @@ $args = [
     'post_status'    => 'publish',
     'order'          => 'DESC',
 ];
-if ($selection_type == 'manual')
+if ($faqs)
     $args['post__in'] = $faqs;
 
 $query = new WP_Query($args);
@@ -45,7 +44,8 @@ $query = new WP_Query($args);
                         <source srcset="<?php echo $image['url']; ?>" type="image/jpg"/>
                         <?php echo wp_get_attachment_image($image['id'], 'full', false, [
                             'class' => 'rellax-img',
-                            'data-rellax-speed' => '-2.5',
+                            'data-rellax-speed' => '-1',
+                            'data-rellax-desktop-speed' => '-2.5',
                             'fetchpriority' => 'high',
                             'loading' => 'lazy'
                         ]); ?>
@@ -56,7 +56,7 @@ $query = new WP_Query($args);
                 <div class="faq-accordion sticky-block ">
 
                     <h1 class="h3 title title-margin-2 text-left text-animate"><?php echo $title; ?></h1>
-                    <div class="accordion animate" itemscope itemtype="https://schema.org/FAQPage" data-animate='{"target": ".slideUp",  "delay": 200}'>
+                    <div class="accordion animate" itemscope itemtype="https://schema.org/FAQPage" data-animate='{"target": ".slideUp",  "delay": 100}'>
 
                         <?php while ($query->have_posts()) {
                             $query->the_post();

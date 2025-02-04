@@ -13,7 +13,6 @@ if (!IS_ADMIN && $disabled) {
 $class_name = isset($args['className']) ? ' ' . $args['className'] : '';
 $block_id   = isset($args['metadata']['name']) ? str_replace(' ', '', $args['metadata']['name']) : '';
 
-$selection_type   = get_field_value($block_fields, 'selection_type');
 $posts_per_page   = get_field_value($block_fields, 'posts_per_page') ?: 5;
 $services         = get_field_value($block_fields, 'services');
 
@@ -24,7 +23,7 @@ $args = [
     'order'          => 'ASC',
     'orderby'        => 'menu_order',
 ];
-if ($selection_type == 'manual')
+if ($services)
     $args['post__in'] = $services;
 
 $query = new WP_Query($args);
@@ -39,7 +38,7 @@ $query = new WP_Query($args);
         <div class="row justify-content-center">
             <div class="col-12">
                 <!-- srv wrap -->
-                <div class="srv-wrap <?php  if (!IS_ADMIN) echo 'animate'?>" data-animate='{"target": ".slideLeft",  "delay": 300}'>
+                <div class="srv-wrap <?php  if (!IS_ADMIN) echo 'animate'?>" data-animate='{"target": ".slideLeft",  "delay": 100}'>
 
                     <?php while ($query->have_posts()) {
                         $query->the_post();

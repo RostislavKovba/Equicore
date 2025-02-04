@@ -51,38 +51,40 @@ $query = new WP_Query($args);
                 <input type="hidden" name="meta_type" value="<?php echo $meta_type; ?>">
 
                 <div class="sub-links">
-                    <div class="custom-checkbox js-all-filter">
-                        <input type="radio"
-                               name="event_type"
-                               id="all"
-                               value="all"
-                            <?php echo 'checked'?>
-                        >
-                        <label for="all">
-                            Всі
-                        </label>
-                    </div>
+                    <div class="sub-links-w">
+                        <div class="custom-checkbox js-all-filter">
+                            <input type="radio"
+                                   name="event_type"
+                                   id="all"
+                                   value="all"
+                                <?php echo 'checked'?>
+                            >
+                            <label for="all">
+                                Всі
+                            </label>
+                        </div>
 
-                    <div class="custom-checkbox js-filter-item">
-                        <input type="radio"
-                               name="event_type"
-                               id="future"
-                               value="future"
-                        >
-                        <label for="future">
-                            Активні
-                        </label>
-                    </div>
+                        <div class="custom-checkbox js-filter-item">
+                            <input type="radio"
+                                   name="event_type"
+                                   id="future"
+                                   value="future"
+                            >
+                            <label for="future">
+                                Активні
+                            </label>
+                        </div>
 
-                    <div class="custom-checkbox js-filter-item">
-                        <input type="radio"
-                               name="event_type"
-                               id="past"
-                               value="past"
-                        >
-                        <label for="past">
-                            Архів
-                        </label>
+                        <div class="custom-checkbox js-filter-item">
+                            <input type="radio"
+                                   name="event_type"
+                                   id="past"
+                                   value="past"
+                            >
+                            <label for="past">
+                                Архів
+                            </label>
+                        </div>
                     </div>
                 </div>
 

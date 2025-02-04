@@ -25,14 +25,20 @@ $image      = get_field_value($block_fields, 'image') ?: get_the_post_thumbnail(
 >
     <div class="banner <?php if (!IS_ADMIN) echo 'full'?>">
         <div class="banner-media">
+
             <picture>
-                <source srcset="<?php echo $image['url']; ?>" type="image/jpg"/>
-                <?php echo wp_get_attachment_image($image['id'], 'full', false, [
-                    'class' => 'rellax-img',
-                    'data-rellax-speed' => '-8.5',
-                    'fetchpriority' => 'high',
-                    'loading' => 'eager'
-                ]); ?>
+                <!-- desktop -->
+                <source srcset="<?php echo $image['desktop']['url']; ?>" type="image/jpg" media="(min-width:768px)">
+                <!-- mobile -->
+                <source srcset="<?php echo $image['mobile']['url']; ?>" type="image/jpg" media="(max-width:767px)">
+                <img class="rellax-img"
+                    data-rellax-speed="-1"
+                    data-rellax-desktop-speed="-8.5"
+                    fetchpriority="high"
+                    src="#"
+                    alt="Banner Image"
+                    loading="eager"
+                >
             </picture>
         </div>
 

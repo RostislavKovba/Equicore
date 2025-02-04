@@ -109,8 +109,12 @@
     overflow-y: hidden;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    display: flex;
     gap: var(--space);
+
+    &-w {
+        display: flex;
+        gap: 1rem;
+    }
 
     ul {
         width: max-content;
@@ -167,9 +171,10 @@
 @include maxMedia(sm) {
     .sub-links {
         margin-inline: calc(-1 * var(--space));
+        padding-inline: var(--space);
 
-        ul {
-            padding-inline: var(--space);
-        }
+        //ul {
+        //    padding-inline: var(--space);
+        //}
     }
 }

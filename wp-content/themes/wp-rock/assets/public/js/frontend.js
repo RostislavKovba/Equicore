@@ -1010,7 +1010,7 @@ jQuery(function ($) {
     (_document$querySelect2 = document.querySelectorAll('.text-animate')) === null || _document$querySelect2 === void 0 || _document$querySelect2.forEach(function (element) {
       textAnimateObserver.observe(element);
     });
-  }, 1000);
+  }, 500);
 });
 }();
 /******/ })()

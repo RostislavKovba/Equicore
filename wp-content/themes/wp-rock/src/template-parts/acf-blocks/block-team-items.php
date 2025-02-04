@@ -18,7 +18,6 @@ $block_id   = isset($args['metadata']['name']) ? str_replace(' ', '', $args['met
 
 $is_reverse       = get_field_value($block_fields, 'is_reverse');
 
-$selection_type   = get_field_value($block_fields, 'selection_type');
 $posts_per_page   = get_field_value($block_fields, 'posts_per_page') ?: 4;
 $team             = get_field_value($block_fields, 'team');
 
@@ -28,7 +27,7 @@ $args = [
     'post_status'    => 'publish',
     'order'          => 'DESC',
 ];
-if ($selection_type == 'manual')
+if ($team)
     $args['post__in'] = $team;
 
 $query = new WP_Query($args);
@@ -40,7 +39,7 @@ $i = 0;
     <?php if ($block_id) echo ' id="' . esc_attr($block_id) . '"'; ?>
     <?php if (IS_ADMIN && $disabled) echo 'disabled="disabled"'; ?>
 >
-    <div class="container <?php if (!IS_ADMIN) echo ' animate'; ?>" data-animate='{"target": ".fadeIn",  "delay": 300}'>
+    <div class="container <?php if (!IS_ADMIN) echo ' animate'; ?>" data-animate='{"target": ".fadeIn",  "delay": 100}'>
 
         <?php while ($query->have_posts()) {
             $query->the_post();

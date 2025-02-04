@@ -82,13 +82,14 @@ body {
 }
 
 .text > *:has(.title-decor) {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
 }
 .title-decor {
     --text-space: 0.5rem;
     --imgSz: 0.875rem;
     --text-li-padding : 1.4rem;
 
+    display: inline-block;
     position: relative;
     padding-left: var(--text-li-padding);
     text-transform: uppercase;
@@ -422,6 +423,10 @@ h6,
 
 .text-right {
     text-align: right;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
 }
 
 @include minMedia(xl) {

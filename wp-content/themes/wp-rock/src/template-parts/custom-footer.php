@@ -101,7 +101,8 @@ $socials_title = get_field_value($global_options, 'footer_socials_title');
                 <div class="col-lg-4 order-2 order-lg-2">
                     <a class="dev-link" target="_blank" href="https://spaceweb.com.ua/">
                         <span>Developed by</span>
-                        <img width="102" height="14" src="<?php echo ASSETS_IMG ?>/SpaceWeb-logo.svg" alt="SpaceWeb logo" loading="lazy" />
+                        <span style="text-decoration: underline">spaceweb</span>
+<!--                        <img width="102" height="14" src="--><?php //echo ASSETS_IMG ?><!--/SpaceWeb-logo.svg" alt="SpaceWeb logo" loading="lazy" />-->
                     </a>
                 </div>
             </div>

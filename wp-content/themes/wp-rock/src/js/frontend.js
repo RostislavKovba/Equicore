@@ -465,5 +465,5 @@ jQuery(function ($) {
         document.querySelectorAll('.text-animate')?.forEach((element) => {
             textAnimateObserver.observe(element);
         });
-    }, 1000);
+    }, 500);
 });

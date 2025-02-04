@@ -125,10 +125,10 @@
     height: var(--size);
     border-radius: 100%;
     background: transparent;
-    color: var(--clr-black);
+    color: var(--clr-primary);
     border: rem(1) solid var(--clr-border);
     cursor: pointer;
-    transition: var(--transition-2) !important;
+    transition: var(--transition-1) !important;
 
     svg {
         --size: 1rem;

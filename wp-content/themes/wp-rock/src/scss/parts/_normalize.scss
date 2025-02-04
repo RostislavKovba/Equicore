@@ -19,12 +19,20 @@ html {
 	animation-duration: 0.5s;
 }
 
+//::view-transition-old(root) {
+//	animation: var(--cubic-1) move-out;
+//}
+//
+//::view-transition-new(root) {
+//	animation: var(--cubic-1) move-in;
+//}
+
 ::view-transition-old(root) {
-	animation: var(--cubic-1) move-out;
+	animation: 0.1s ease-in-out both move-out;
 }
 
 ::view-transition-new(root) {
-	animation: var(--cubic-1) move-in;
+	animation: 0.3s ease-in-out both move-in;
 }
 
 // Page scrollbar

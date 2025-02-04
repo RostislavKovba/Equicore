@@ -15,7 +15,6 @@ $block_id   = isset($args['metadata']['name']) ? str_replace(' ', '', $args['met
 
 $gallery_type   = get_field_value($block_fields, 'gallery_type');
 
-$selection_type = get_field_value($block_fields, 'selection_type');
 $posts_per_page = get_field_value($block_fields, 'posts_per_page') ?: -1;
 $gallery        = get_field_value($block_fields, 'gallery');
 $button         = get_field_value($block_fields, 'button');
@@ -27,7 +26,7 @@ $args = [
     'post_status'    => 'publish',
     'order'          => 'DESC',
 ];
-if ($selection_type == 'manual')
+if ($gallery)
     $args['post__in'] = $gallery;
 
 $query = new WP_Query($args);

@@ -31,7 +31,7 @@ $telegram    = get_field_value($global_options, 'telegram');
         <div class="qst-section">
             <div class="row g-xs justify-content-center">
                 <div class="col-md-8 animate slideRight">
-                    <div class="cta-content <?php if (!IS_ADMIN) echo 'animate'; ?>" data-animate='{"target": ".fadeIn",  "delay": 300}'>
+                    <div class="cta-content <?php if (!IS_ADMIN) echo 'animate'; ?>" data-animate='{"target": ".fadeIn",  "delay": 100}'>
                         <div class="h3 title mb-md text-left text-animate">
                             <?php echo $title ?>
                         </div>

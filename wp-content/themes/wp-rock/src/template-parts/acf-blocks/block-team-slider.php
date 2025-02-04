@@ -20,7 +20,6 @@ $title       = get_field_value($block_fields, 'title');
 $description = get_field_value($block_fields, 'description');
 $btn         = get_field_value($block_fields, 'button');
 
-$selection_type   = get_field_value($block_fields, 'selection_type');
 $posts_per_page   = get_field_value($block_fields, 'posts_per_page') ?: 4;
 $team             = get_field_value($block_fields, 'team');
 
@@ -30,7 +29,7 @@ $args = [
     'post_status'    => 'publish',
     'order'          => 'DESC',
 ];
-if ($selection_type == 'manual')
+if ($team)
     $args['post__in'] = $team;
 
 $query = new WP_Query($args);

@@ -38,7 +38,7 @@ $col_template = [
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="title-block text-center mb-md">
-                    <div class="text text-pretty slideUp">
+                    <div class="text-uppercase text text-pretty slideUp">
                         <?php echo $suptitle; ?>
                     </div>
 

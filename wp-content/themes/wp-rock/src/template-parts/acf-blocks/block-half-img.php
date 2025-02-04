@@ -36,7 +36,8 @@ $image      = get_field_value($block_fields, 'image');
                         <source srcset="<?php echo $image['url']; ?>" type="image/jpg"/>
                         <?php echo wp_get_attachment_image($image['id'], 'full', false, [
                             'class' => 'rellax-img',
-                            'data-rellax-speed' => '-2',
+                            'data-rellax-speed' => '-1',
+                            'data-rellax-desktop-speed' => '-2',
                             'loading' => 'lazy'
                         ]); ?>
                     </picture>

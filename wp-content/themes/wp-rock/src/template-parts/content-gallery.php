@@ -24,7 +24,8 @@ $categories = get_the_category($id);
             <div class="lightbox-img" data-src="<?php echo $thumbnail['url'] ?>">
                 <?php echo wp_get_attachment_image($thumbnail['id'], 'full', false, [
                     'class' => 'rellax-img',
-                    'data-rellax-speed' => '-1.5',
+                    'data-rellax-speed' => '-1',
+                    'data-rellax-desktop-speed' => '-1.5',
                 ]); ?>
             </div>
 

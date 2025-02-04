@@ -14,6 +14,7 @@
         margin-top: 0.5rem;
     }
 }
+
 .team-slider {
     & > * + * {
         margin-top: 1rem;
@@ -29,6 +30,7 @@
     background: linear-gradient(90deg, rgba(28, 28, 28, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
     backdrop-filter: blur(2.5px);
     padding: rem(12) rem(16);
+    border-radius: 0 0 var(--rd-2) var(--rd-2);
     & > * + * {
         margin-top: rem(2);
     }
@@ -110,6 +112,10 @@
 }
 
 @include maxMedia(md) {
+
+    .team-title {
+        font-size: rem(28);
+    }
     .team-img {
         &::before {
             background-color: rgba(0, 0, 0, 0.3);
